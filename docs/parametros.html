@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capitulo 2 Pruebas de hipótesis paramétricas y no paramétricas | Proyecto Aplicativo</title>
+  <meta name="description" content="En este espacio tendré lo relacionado a mi proyecto aplicativo para mostrar nuestros aprendizajes durante todo el semestre sobre Métodos Estadísticos." />
+  <meta name="generator" content="bookdown 0.47 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capitulo 2 Pruebas de hipótesis paramétricas y no paramétricas | Proyecto Aplicativo" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="En este espacio tendré lo relacionado a mi proyecto aplicativo para mostrar nuestros aprendizajes durante todo el semestre sobre Métodos Estadísticos." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capitulo 2 Pruebas de hipótesis paramétricas y no paramétricas | Proyecto Aplicativo" />
+  
+  <meta name="twitter:description" content="En este espacio tendré lo relacionado a mi proyecto aplicativo para mostrar nuestros aprendizajes durante todo el semestre sobre Métodos Estadísticos." />
+  
+
+<meta name="author" content="Mary Ramirez y Maria Jose Martinez" />
+
+
+<meta name="date" content="2026-09-17" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="intro.html"/>
+<link rel="next" href="correlacion.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Contexto del problema</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#objetivo"><i class="fa fa-check"></i><b>0.1</b> Objetivo</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Análisis exploratorio de datos (EDA)</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#preparaci%C3%B3n-de-los-datos"><i class="fa fa-check"></i><b>1.1</b> Preparación de los datos</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="intro.html"><a href="intro.html#librer%C3%ADas"><i class="fa fa-check"></i><b>1.1.1</b> Librerías</a></li>
+<li class="chapter" data-level="1.1.2" data-path="intro.html"><a href="intro.html#cargar-los-datos"><i class="fa fa-check"></i><b>1.1.2</b> Cargar los datos</a></li>
+<li class="chapter" data-level="1.1.3" data-path="intro.html"><a href="intro.html#primer-vistazo-a-los-datos"><i class="fa fa-check"></i><b>1.1.3</b> Primer vistazo a los datos</a></li>
+<li class="chapter" data-level="1.1.4" data-path="intro.html"><a href="intro.html#datos-faltantes"><i class="fa fa-check"></i><b>1.1.4</b> Datos faltantes</a></li>
+<li class="chapter" data-level="1.1.5" data-path="intro.html"><a href="intro.html#variables-como-factor"><i class="fa fa-check"></i><b>1.1.5</b> Variables como factor</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#an%C3%A1lisis-univariado-de-la-variable-de-costo-cost"><i class="fa fa-check"></i><b>1.2</b> Análisis univariado de la variable de costo (<code>cost</code>)</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="intro.html"><a href="intro.html#estad%C3%ADsticos-descriptivos"><i class="fa fa-check"></i><b>1.2.1</b> Estadísticos descriptivos</a></li>
+<li class="chapter" data-level="1.2.2" data-path="intro.html"><a href="intro.html#distribuci%C3%B3n-histograma"><i class="fa fa-check"></i><b>1.2.2</b> Distribución (histograma)</a></li>
+<li class="chapter" data-level="1.2.3" data-path="intro.html"><a href="intro.html#boxplot"><i class="fa fa-check"></i><b>1.2.3</b> Boxplot</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#an%C3%A1lisis-univariado-de-las-variables-de-ventas"><i class="fa fa-check"></i><b>1.3</b> Análisis univariado de las variables de ventas</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="intro.html"><a href="intro.html#estad%C3%ADsticos-descriptivos-1"><i class="fa fa-check"></i><b>1.3.1</b> Estadísticos descriptivos</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#an%C3%A1lisis-univariado-del-perfil-del-hogar"><i class="fa fa-check"></i><b>1.4</b> Análisis univariado del perfil del hogar</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="intro.html"><a href="intro.html#tabla-de-frecuencias"><i class="fa fa-check"></i><b>1.4.1</b> Tabla de frecuencias</a></li>
+<li class="chapter" data-level="1.4.2" data-path="intro.html"><a href="intro.html#gr%C3%A1ficos-de-barras"><i class="fa fa-check"></i><b>1.4.2</b> Gráficos de barras</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#an%C3%A1lisis-bivariado-perfil-del-hogar-vs.-costo-y-ventas"><i class="fa fa-check"></i><b>1.5</b> Análisis bivariado: perfil del hogar vs. costo y ventas</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="intro.html"><a href="intro.html#costo-seg%C3%BAn-n%C3%BAmero-de-hijos-totales"><i class="fa fa-check"></i><b>1.5.1</b> Costo según número de hijos totales</a></li>
+<li class="chapter" data-level="1.5.2" data-path="intro.html"><a href="intro.html#ventas-por-unidad-seg%C3%BAn-hijos-en-casa"><i class="fa fa-check"></i><b>1.5.2</b> Ventas por unidad según hijos en casa</a></li>
+<li class="chapter" data-level="1.5.3" data-path="intro.html"><a href="intro.html#ventas-de-tienda-seg%C3%BAn-autos-disponibles"><i class="fa fa-check"></i><b>1.5.3</b> Ventas de tienda según autos disponibles</a></li>
+<li class="chapter" data-level="1.5.4" data-path="intro.html"><a href="intro.html#dispersi%C3%B3n-superficie-de-la-tienda-vs.-costo"><i class="fa fa-check"></i><b>1.5.4</b> Dispersión: superficie de la tienda vs. costo</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="parametros.html"><a href="parametros.html"><i class="fa fa-check"></i><b>2</b> Pruebas de hipótesis paramétricas y no paramétricas</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="parametros.html"><a href="parametros.html#librer%C3%ADas-1"><i class="fa fa-check"></i><b>2.1</b> Librerías</a></li>
+<li class="chapter" data-level="2.2" data-path="parametros.html"><a href="parametros.html#carga-de-datos"><i class="fa fa-check"></i><b>2.2</b> Carga de datos</a></li>
+<li class="chapter" data-level="2.3" data-path="parametros.html"><a href="parametros.html#comparaci%C3%B3n-de-dos-medias-independientes-varianzas-iguales-costo-seg%C3%BAn-disponibilidad-de-auto"><i class="fa fa-check"></i><b>2.3</b> Comparación de dos medias independientes (varianzas iguales): costo según disponibilidad de auto</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="parametros.html"><a href="parametros.html#preparaci%C3%B3n-de-datos"><i class="fa fa-check"></i><b>2.3.1</b> Preparación de datos</a></li>
+<li class="chapter" data-level="2.3.2" data-path="parametros.html"><a href="parametros.html#resumen-exploratorio"><i class="fa fa-check"></i><b>2.3.2</b> Resumen exploratorio</a></li>
+<li class="chapter" data-level="2.3.3" data-path="parametros.html"><a href="parametros.html#supuesto-de-normalidad"><i class="fa fa-check"></i><b>2.3.3</b> Supuesto de normalidad</a></li>
+<li class="chapter" data-level="2.3.4" data-path="parametros.html"><a href="parametros.html#supuesto-de-homocedasticidad"><i class="fa fa-check"></i><b>2.3.4</b> Supuesto de homocedasticidad</a></li>
+<li class="chapter" data-level="2.3.5" data-path="parametros.html"><a href="parametros.html#verificaci%C3%B3n-manual-del-supuesto-de-homocedasticidad-teorema-de-fisher"><i class="fa fa-check"></i><b>2.3.5</b> Verificación manual del supuesto de homocedasticidad (teorema de Fisher)</a></li>
+<li class="chapter" data-level="2.3.6" data-path="parametros.html"><a href="parametros.html#prueba-t"><i class="fa fa-check"></i><b>2.3.6</b> Prueba t</a></li>
+<li class="chapter" data-level="2.3.7" data-path="parametros.html"><a href="parametros.html#tama%C3%B1o-del-efecto"><i class="fa fa-check"></i><b>2.3.7</b> Tamaño del efecto</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="parametros.html"><a href="parametros.html#comparaci%C3%B3n-de-dos-medias-independientes-varianzas-distintas-welch-ventas-seg%C3%BAn-hijos-en-casa"><i class="fa fa-check"></i><b>2.4</b> Comparación de dos medias independientes (varianzas distintas, Welch): ventas según hijos en casa</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="parametros.html"><a href="parametros.html#preparaci%C3%B3n-de-datos-1"><i class="fa fa-check"></i><b>2.4.1</b> Preparación de datos</a></li>
+<li class="chapter" data-level="2.4.2" data-path="parametros.html"><a href="parametros.html#resumen-exploratorio-1"><i class="fa fa-check"></i><b>2.4.2</b> Resumen exploratorio</a></li>
+<li class="chapter" data-level="2.4.3" data-path="parametros.html"><a href="parametros.html#supuesto-de-normalidad-1"><i class="fa fa-check"></i><b>2.4.3</b> Supuesto de normalidad</a></li>
+<li class="chapter" data-level="2.4.4" data-path="parametros.html"><a href="parametros.html#supuesto-de-homocedasticidad-1"><i class="fa fa-check"></i><b>2.4.4</b> Supuesto de homocedasticidad</a></li>
+<li class="chapter" data-level="2.4.5" data-path="parametros.html"><a href="parametros.html#prueba-t-de-welch"><i class="fa fa-check"></i><b>2.4.5</b> Prueba t de Welch</a></li>
+<li class="chapter" data-level="2.4.6" data-path="parametros.html"><a href="parametros.html#tama%C3%B1o-del-efecto-1"><i class="fa fa-check"></i><b>2.4.6</b> Tamaño del efecto</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="parametros.html"><a href="parametros.html#comparaci%C3%B3n-de-medias-pareadas-hijos-totales-vs.-hijos-que-viven-en-casa"><i class="fa fa-check"></i><b>2.5</b> Comparación de medias pareadas: hijos totales vs. hijos que viven en casa</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="parametros.html"><a href="parametros.html#datos"><i class="fa fa-check"></i><b>2.5.1</b> Datos</a></li>
+<li class="chapter" data-level="2.5.2" data-path="parametros.html"><a href="parametros.html#resumen-exploratorio-2"><i class="fa fa-check"></i><b>2.5.2</b> Resumen exploratorio</a></li>
+<li class="chapter" data-level="2.5.3" data-path="parametros.html"><a href="parametros.html#supuesto-de-normalidad-2"><i class="fa fa-check"></i><b>2.5.3</b> Supuesto de normalidad</a></li>
+<li class="chapter" data-level="2.5.4" data-path="parametros.html"><a href="parametros.html#prueba-t-pareada"><i class="fa fa-check"></i><b>2.5.4</b> Prueba t pareada</a></li>
+<li class="chapter" data-level="2.5.5" data-path="parametros.html"><a href="parametros.html#tama%C3%B1o-del-efecto-2"><i class="fa fa-check"></i><b>2.5.5</b> Tamaño del efecto</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="parametros.html"><a href="parametros.html#comparaci%C3%B3n-no-param%C3%A9trica-de-dos-grupos-independientes-ventas-de-tienda-seg%C3%BAn-cantidad-de-hijos-totales"><i class="fa fa-check"></i><b>2.6</b> Comparación no paramétrica de dos grupos independientes: ventas de tienda según cantidad de hijos totales</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="parametros.html"><a href="parametros.html#datos-1"><i class="fa fa-check"></i><b>2.6.1</b> Datos</a></li>
+<li class="chapter" data-level="2.6.2" data-path="parametros.html"><a href="parametros.html#resumen-exploratorio-3"><i class="fa fa-check"></i><b>2.6.2</b> Resumen exploratorio</a></li>
+<li class="chapter" data-level="2.6.3" data-path="parametros.html"><a href="parametros.html#supuesto-de-normalidad-comparando-ks-y-lilliefors"><i class="fa fa-check"></i><b>2.6.3</b> Supuesto de normalidad (comparando KS y Lilliefors)</a></li>
+<li class="chapter" data-level="2.6.4" data-path="parametros.html"><a href="parametros.html#supuesto-de-homogeneidad-de-varianzas"><i class="fa fa-check"></i><b>2.6.4</b> Supuesto de homogeneidad de varianzas</a></li>
+<li class="chapter" data-level="2.6.5" data-path="parametros.html"><a href="parametros.html#prueba-de-wilcoxon-mann-whitney"><i class="fa fa-check"></i><b>2.6.5</b> Prueba de Wilcoxon (Mann-Whitney)</a></li>
+<li class="chapter" data-level="2.6.6" data-path="parametros.html"><a href="parametros.html#tama%C3%B1o-del-efecto-3"><i class="fa fa-check"></i><b>2.6.6</b> Tamaño del efecto</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="parametros.html"><a href="parametros.html#comparaci%C3%B3n-no-param%C3%A9trica-pareada-hijos-totales-vs.-hijos-en-casa-alternativa-a-la-prueba-t"><i class="fa fa-check"></i><b>2.7</b> Comparación no paramétrica pareada: hijos totales vs. hijos en casa (alternativa a la prueba t)</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="parametros.html"><a href="parametros.html#prueba-de-wilcoxon-pareada"><i class="fa fa-check"></i><b>2.7.1</b> Prueba de Wilcoxon pareada</a></li>
+<li class="chapter" data-level="2.7.2" data-path="parametros.html"><a href="parametros.html#tama%C3%B1o-del-efecto-4"><i class="fa fa-check"></i><b>2.7.2</b> Tamaño del efecto</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="parametros.html"><a href="parametros.html#anova-de-un-factor-costo-seg%C3%BAn-n%C3%BAmero-de-hijos-totales"><i class="fa fa-check"></i><b>2.8</b> ANOVA de un factor: costo según número de hijos totales</a>
+<ul>
+<li class="chapter" data-level="2.8.1" data-path="parametros.html"><a href="parametros.html#tama%C3%B1os-de-muestra-y-promedios-por-grupo"><i class="fa fa-check"></i><b>2.8.1</b> Tamaños de muestra y promedios por grupo</a></li>
+<li class="chapter" data-level="2.8.2" data-path="parametros.html"><a href="parametros.html#sumas-de-cuadrados-y-estad%C3%ADstico-f-manual"><i class="fa fa-check"></i><b>2.8.2</b> Sumas de cuadrados y estadístico F (manual)</a></li>
+<li class="chapter" data-level="2.8.3" data-path="parametros.html"><a href="parametros.html#tama%C3%B1o-del-efecto-eta-cuadrado"><i class="fa fa-check"></i><b>2.8.3</b> Tamaño del efecto (eta cuadrado)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.9" data-path="parametros.html"><a href="parametros.html#prueba-de-independencia-chi-cuadrado-tama%C3%B1o-de-la-familia-vs.-preferencia-por-producto-bajo-en-grasa"><i class="fa fa-check"></i><b>2.9</b> Prueba de independencia (chi-cuadrado): tamaño de la familia vs. preferencia por producto bajo en grasa</a>
+<ul>
+<li class="chapter" data-level="2.9.1" data-path="parametros.html"><a href="parametros.html#preparaci%C3%B3n-de-datos-y-tabla-de-contingencia"><i class="fa fa-check"></i><b>2.9.1</b> Preparación de datos y tabla de contingencia</a></li>
+<li class="chapter" data-level="2.9.2" data-path="parametros.html"><a href="parametros.html#chi-cuadrado-calculado-a-mano"><i class="fa fa-check"></i><b>2.9.2</b> Chi-cuadrado calculado a mano</a></li>
+<li class="chapter" data-level="2.9.3" data-path="parametros.html"><a href="parametros.html#verificaci%C3%B3n-con-chisq.test"><i class="fa fa-check"></i><b>2.9.3</b> Verificación con <code>chisq.test()</code></a></li>
+<li class="chapter" data-level="2.9.4" data-path="parametros.html"><a href="parametros.html#tama%C3%B1o-del-efecto-v-de-cram%C3%A9r"><i class="fa fa-check"></i><b>2.9.4</b> Tamaño del efecto (V de Cramér)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="correlacion.html"><a href="correlacion.html"><i class="fa fa-check"></i><b>3</b> Correlación y regresión lineal simple</a>
+<ul>
+<li class="chapter" data-level="3.0.1" data-path="correlacion.html"><a href="correlacion.html#librer%C3%ADas-2"><i class="fa fa-check"></i><b>3.0.1</b> Librerías</a></li>
+<li class="chapter" data-level="3.1" data-path="correlacion.html"><a href="correlacion.html#carga-de-datos-1"><i class="fa fa-check"></i><b>3.1</b> Carga de datos</a></li>
+<li class="chapter" data-level="3.2" data-path="correlacion.html"><a href="correlacion.html#diagrama-de-dispersi%C3%B3n"><i class="fa fa-check"></i><b>3.2</b> Diagrama de dispersión</a></li>
+<li class="chapter" data-level="3.3" data-path="correlacion.html"><a href="correlacion.html#supuesto-de-normalidad-3"><i class="fa fa-check"></i><b>3.3</b> Supuesto de normalidad</a></li>
+<li class="chapter" data-level="3.4" data-path="correlacion.html"><a href="correlacion.html#coeficiente-de-correlaci%C3%B3n-de-pearson"><i class="fa fa-check"></i><b>3.4</b> Coeficiente de correlación de Pearson</a></li>
+<li class="chapter" data-level="3.5" data-path="correlacion.html"><a href="correlacion.html#regresi%C3%B3n-lineal-simple"><i class="fa fa-check"></i><b>3.5</b> Regresión lineal simple</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Proyecto Aplicativo</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="parametros" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">Capitulo 2</span> Pruebas de hipótesis paramétricas y no paramétricas<a href="parametros.html#parametros" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Este capítulo reúne un conjunto de pruebas de hipótesis para comparar grupos, todas aplicadas sobre el mismo dataset de campañas de mercadeo, en función del perfil del hogar (<code>total_children</code>, <code>num_children_at_home</code>, <code>avg_cars_at home(approx).1</code>) y su relación con <code>cost</code>, <code>unit_sales</code> y <code>store_sales</code>. Se cubren tanto los métodos paramétricos (prueba t para muestras independientes con varianzas iguales o distintas, prueba t pareada, y ANOVA de un factor) como sus alternativas no paramétricas (Wilcoxon-Mann-Whitney y Wilcoxon pareado), usadas cuando no se cumple el supuesto de normalidad. En cada caso se revisan primero los supuestos (normalidad y homogeneidad de varianzas cuando aplica) antes de decidir qué prueba usar, y se calcula el tamaño del efecto para complementar la significancia estadística. Se cierra el capítulo con una prueba de independencia chi-cuadrado, para el caso de dos variables categóricas.</p>
+<p>Con 360 mil filas, <code>shapiro.test()</code> no puede usarse directamente (tiene un límite de 5000 datos), así que la normalidad se evalúa con Kolmogorov-Smirnov (y Lilliefors en la sección donde se comparan varias pruebas).</p>
+<div id="librerías-1" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Librerías<a href="parametros.html#librer%C3%ADas-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Carguemos las librerías que se usarán a lo largo del capítulo.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="parametros.html#cb1-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="parametros.html#cb1-2" tabindex="-1"></a><span class="fu">library</span>(effsize)</span>
+<span id="cb1-3"><a href="parametros.html#cb1-3" tabindex="-1"></a><span class="fu">library</span>(nortest)</span>
+<span id="cb1-4"><a href="parametros.html#cb1-4" tabindex="-1"></a><span class="fu">library</span>(car)</span>
+<span id="cb1-5"><a href="parametros.html#cb1-5" tabindex="-1"></a><span class="fu">library</span>(rstatix)</span>
+<span id="cb1-6"><a href="parametros.html#cb1-6" tabindex="-1"></a><span class="fu">library</span>(coin)</span></code></pre></div>
+</div>
+<div id="carga-de-datos" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Carga de datos<a href="parametros.html#carga-de-datos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="parametros.html#cb2-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/train.csv&quot;</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+</div>
+<div id="comparación-de-dos-medias-independientes-varianzas-iguales-costo-según-disponibilidad-de-auto" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Comparación de dos medias independientes (varianzas iguales): costo según disponibilidad de auto<a href="parametros.html#comparaci%C3%B3n-de-dos-medias-independientes-varianzas-iguales-costo-seg%C3%BAn-disponibilidad-de-auto" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="preparación-de-datos" class="section level3 hasAnchor" number="2.3.1">
+<h3><span class="header-section-number">2.3.1</span> Preparación de datos<a href="parametros.html#preparaci%C3%B3n-de-datos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="parametros.html#cb3-1" tabindex="-1"></a>df_autos <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb3-2"><a href="parametros.html#cb3-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">tiene_auto =</span> <span class="fu">factor</span>(<span class="fu">ifelse</span>(<span class="st">`</span><span class="at">avg_cars_at home(approx).1</span><span class="st">`</span> <span class="sc">==</span> <span class="dv">0</span>, <span class="st">&quot;Sin auto&quot;</span>, <span class="st">&quot;Con auto&quot;</span>)))</span>
+<span id="cb3-3"><a href="parametros.html#cb3-3" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="parametros.html#cb3-4" tabindex="-1"></a>sin_auto <span class="ot">&lt;-</span> df_autos <span class="sc">%&gt;%</span> <span class="fu">filter</span>(tiene_auto <span class="sc">==</span> <span class="st">&quot;Sin auto&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">pull</span>(cost)</span>
+<span id="cb3-5"><a href="parametros.html#cb3-5" tabindex="-1"></a>con_auto <span class="ot">&lt;-</span> df_autos <span class="sc">%&gt;%</span> <span class="fu">filter</span>(tiene_auto <span class="sc">==</span> <span class="st">&quot;Con auto&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">pull</span>(cost)</span></code></pre></div>
+</div>
+<div id="resumen-exploratorio" class="section level3 hasAnchor" number="2.3.2">
+<h3><span class="header-section-number">2.3.2</span> Resumen exploratorio<a href="parametros.html#resumen-exploratorio" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="parametros.html#cb4-1" tabindex="-1"></a>df_autos <span class="sc">%&gt;%</span></span>
+<span id="cb4-2"><a href="parametros.html#cb4-2" tabindex="-1"></a>  <span class="fu">group_by</span>(tiene_auto) <span class="sc">%&gt;%</span></span>
+<span id="cb4-3"><a href="parametros.html#cb4-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">length</span>(cost), <span class="at">prom =</span> <span class="fu">mean</span>(cost), <span class="at">ds =</span> <span class="fu">sd</span>(cost),</span>
+<span id="cb4-4"><a href="parametros.html#cb4-4" tabindex="-1"></a>            <span class="at">mediana =</span> <span class="fu">median</span>(cost), <span class="at">RIC =</span> <span class="fu">IQR</span>(cost), <span class="at">min =</span> <span class="fu">min</span>(cost), <span class="at">max =</span> <span class="fu">max</span>(cost))</span></code></pre></div>
+<pre><code>## # A tibble: 2 × 8
+##   tiene_auto      n  prom    ds mediana   RIC   min   max
+##   &lt;fct&gt;       &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 Con auto   341799  99.8  29.9    98.8  55.1  50.8  150.
+## 2 Sin auto    18537  96.1  30.3    95.2  53.5  50.8  150.</code></pre>
+<p>La variable cost fue analizada según la disponibilidad de vehículo en el hogar, encontrando un marcado desbalance en el tamaño de los grupos: el grupo “Con auto” concentra 341.799 observaciones (94,9%), mientras que “Sin auto” corresponde apenas a 18.537 (5,1%). En cuanto al costo, el grupo “Con auto” presenta un promedio de 99,81 (DS = 29,91), levemente superior al de “Sin auto” con 96,08 (DS = 30,30), diferencia que se mantiene en la mediana (98,81 frente a 95,21).</p>
+<p>Las desviaciones estándar son muy similares entre ambos grupos, lo que constituye un primer indicio a favor del supuesto de homogeneidad de varianzas necesario para la prueba t con varianzas iguales. Por otra parte, en los dos grupos la media es un poco mayor que la mediana, lo que sugiere una leve asimetría positiva en la distribución del costo. El mínimo (50,79) y el máximo (149,75) coinciden exactamente en ambos grupos, por lo que la diferencia observada parece explicarse más por la tendencia central que por la presencia de valores extremos.</p>
+</div>
+<div id="supuesto-de-normalidad" class="section level3 hasAnchor" number="2.3.3">
+<h3><span class="header-section-number">2.3.3</span> Supuesto de normalidad<a href="parametros.html#supuesto-de-normalidad" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="parametros.html#cb6-1" tabindex="-1"></a><span class="fu">ks.test</span>(<span class="fu">scale</span>(sin_auto), <span class="st">&quot;pnorm&quot;</span>)</span></code></pre></div>
+<pre><code>## Warning in ks.test.default(scale(sin_auto), &quot;pnorm&quot;): ties should not be
+## present for the one-sample Kolmogorov-Smirnov test</code></pre>
+<pre><code>## 
+##  Asymptotic one-sample Kolmogorov-Smirnov test
+## 
+## data:  scale(sin_auto)
+## D = 0.12031, p-value &lt; 2.2e-16
+## alternative hypothesis: two-sided</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="parametros.html#cb9-1" tabindex="-1"></a><span class="fu">ks.test</span>(<span class="fu">scale</span>(con_auto), <span class="st">&quot;pnorm&quot;</span>)</span></code></pre></div>
+<pre><code>## Warning in ks.test.default(scale(con_auto), &quot;pnorm&quot;): ties should not be
+## present for the one-sample Kolmogorov-Smirnov test</code></pre>
+<pre><code>## 
+##  Asymptotic one-sample Kolmogorov-Smirnov test
+## 
+## data:  scale(con_auto)
+## D = 0.089175, p-value &lt; 2.2e-16
+## alternative hypothesis: two-sided</code></pre>
+<p>Se aplicó la prueba de Kolmogorov-Smirnov para evaluar el supuesto de normalidad en ambos grupos, dado que con 341.799 y 18.537 observaciones no es posible usar shapiro.test(). En el grupo “Sin auto” se obtuvo D = 0,12031 con p-valor &lt; 2,2e-16, y en “Con auto” D = 0,089175 con p-valor &lt; 2,2e-16. En ambos casos el p-valor es mucho menor que 0,05, por lo que se rechaza la hipótesis nula de normalidad: ni “Sin auto” ni “Con auto” siguen una distribución normal.</p>
+<p>Esto era de esperarse dado el tamaño de muestra tan grande, ya que con miles de datos hasta desviaciones mínimas de la normal terminan siendo estadísticamente significativas. Por esta razón, en lugar de un t-test paramétrico, correspondería usar la alternativa no paramétrica (Wilcoxon-Mann-Whitney) para comparar los dos grupos.</p>
+</div>
+<div id="supuesto-de-homocedasticidad" class="section level3 hasAnchor" number="2.3.4">
+<h3><span class="header-section-number">2.3.4</span> Supuesto de homocedasticidad<a href="parametros.html#supuesto-de-homocedasticidad" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="parametros.html#cb12-1" tabindex="-1"></a><span class="fu">var.test</span>(sin_auto, con_auto)</span></code></pre></div>
+<pre><code>## 
+##  F test to compare two variances
+## 
+## data:  sin_auto and con_auto
+## F = 1.0263, num df = 18536, denom df = 341798, p-value = 0.01446
+## alternative hypothesis: true ratio of variances is not equal to 1
+## 95 percent confidence interval:
+##  1.005156 1.048071
+## sample estimates:
+## ratio of variances 
+##           1.026287</code></pre>
+<p>Se aplicó la prueba F para comparar las varianzas de cost entre los grupos “Sin auto” y “Con auto”, obteniendo F = 1,0263 (num df = 18536, denom df = 341798) con un p-valor = 0,01446. Como el p-valor es menor que 0,05, se rechaza la hipótesis nula de igualdad de varianzas, concluyendo que las varianzas de los dos grupos son estadísticamente distintas (razón de varianzas = 1,026287, IC 95% entre 1,005156 y 1,048071).</p>
+<p>Aunque la diferencia es estadísticamente significativa, la razón de varianzas es muy cercana a 1, lo que indica que en términos prácticos la diferencia es mínima; sin embargo, dado el tamaño de muestra tan grande, incluso diferencias pequeñas terminan siendo detectadas. De todas formas, dado que ya se había establecido que ninguno de los dos grupos cumple el supuesto de normalidad, correspondería usar la prueba no paramétrica de Wilcoxon-Mann-Whitney, para la cual este resultado de homocedasticidad no es un requisito indispensable.</p>
+</div>
+<div id="verificación-manual-del-supuesto-de-homocedasticidad-teorema-de-fisher" class="section level3 hasAnchor" number="2.3.5">
+<h3><span class="header-section-number">2.3.5</span> Verificación manual del supuesto de homocedasticidad (teorema de Fisher)<a href="parametros.html#verificaci%C3%B3n-manual-del-supuesto-de-homocedasticidad-teorema-de-fisher" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="parametros.html#cb14-1" tabindex="-1"></a>n1 <span class="ot">&lt;-</span> <span class="fu">length</span>(sin_auto)</span>
+<span id="cb14-2"><a href="parametros.html#cb14-2" tabindex="-1"></a>n2 <span class="ot">&lt;-</span> <span class="fu">length</span>(con_auto)</span>
+<span id="cb14-3"><a href="parametros.html#cb14-3" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="parametros.html#cb14-4" tabindex="-1"></a>s1 <span class="ot">&lt;-</span> <span class="fu">sum</span>((sin_auto <span class="sc">-</span> <span class="fu">mean</span>(sin_auto))<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> (n1 <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb14-5"><a href="parametros.html#cb14-5" tabindex="-1"></a>s2 <span class="ot">&lt;-</span> <span class="fu">sum</span>((con_auto <span class="sc">-</span> <span class="fu">mean</span>(con_auto))<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> (n2 <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb14-6"><a href="parametros.html#cb14-6" tabindex="-1"></a></span>
+<span id="cb14-7"><a href="parametros.html#cb14-7" tabindex="-1"></a>F0 <span class="ot">&lt;-</span> s1 <span class="sc">/</span> s2</span>
+<span id="cb14-8"><a href="parametros.html#cb14-8" tabindex="-1"></a>gl1 <span class="ot">&lt;-</span> n1 <span class="sc">-</span> <span class="dv">1</span></span>
+<span id="cb14-9"><a href="parametros.html#cb14-9" tabindex="-1"></a>gl2 <span class="ot">&lt;-</span> n2 <span class="sc">-</span> <span class="dv">1</span></span>
+<span id="cb14-10"><a href="parametros.html#cb14-10" tabindex="-1"></a></span>
+<span id="cb14-11"><a href="parametros.html#cb14-11" tabindex="-1"></a>p_valor_F <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> <span class="fu">min</span>(<span class="fu">pf</span>(F0, gl1, gl2, <span class="at">lower.tail =</span> <span class="cn">TRUE</span>), </span>
+<span id="cb14-12"><a href="parametros.html#cb14-12" tabindex="-1"></a>                      <span class="fu">pf</span>(F0, gl1, gl2, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>))</span>
+<span id="cb14-13"><a href="parametros.html#cb14-13" tabindex="-1"></a></span>
+<span id="cb14-14"><a href="parametros.html#cb14-14" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
+<span id="cb14-15"><a href="parametros.html#cb14-15" tabindex="-1"></a>IC_inf_F <span class="ot">&lt;-</span> (s1 <span class="sc">/</span> s2) <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">/</span> <span class="fu">qf</span>(<span class="dv">1</span> <span class="sc">-</span> alpha <span class="sc">/</span> <span class="dv">2</span>, gl1, gl2))</span>
+<span id="cb14-16"><a href="parametros.html#cb14-16" tabindex="-1"></a>IC_sup_F <span class="ot">&lt;-</span> (s1 <span class="sc">/</span> s2) <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">/</span> <span class="fu">qf</span>(alpha <span class="sc">/</span> <span class="dv">2</span>, gl1, gl2))</span>
+<span id="cb14-17"><a href="parametros.html#cb14-17" tabindex="-1"></a></span>
+<span id="cb14-18"><a href="parametros.html#cb14-18" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">F =</span> F0, <span class="at">p_valor =</span> p_valor_F, <span class="at">IC_inf =</span> IC_inf_F, <span class="at">IC_sup =</span> IC_sup_F)</span></code></pre></div>
+<pre><code>##          F    p_valor   IC_inf   IC_sup
+## 1 1.026287 0.01446433 1.005156 1.048071</code></pre>
+<p>El cálculo manual del teorema de Fisher es totalmente consistente con var.test(): F = 1,026287, p-valor = 0,01446433 y el intervalo de confianza (1,005156 - 1,048071) coinciden en ambos casos. Esto confirma que el cálculo manual replica adecuadamente el procedimiento teórico detrás de la prueba F para comparar varianzas. Dado que el p-valor (0,01446) es menor a 0,05, se rechaza la igualdad de varianzas entre “Sin auto” y “Con auto”, aunque la magnitud de la diferencia (razón ≈ 1,03) sea pequeña en términos prácticos.</p>
+</div>
+<div id="prueba-t" class="section level3 hasAnchor" number="2.3.6">
+<h3><span class="header-section-number">2.3.6</span> Prueba t<a href="parametros.html#prueba-t" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="parametros.html#cb16-1" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">x =</span> sin_auto, <span class="at">y =</span> con_auto, <span class="at">var.equal =</span> <span class="cn">FALSE</span>, <span class="at">paired =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  sin_auto and con_auto
+## t = -16.312, df = 20544, p-value &lt; 2.2e-16
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -4.172328 -3.277196
+## sample estimates:
+## mean of x mean of y 
+##  96.08158  99.80634</code></pre>
+<p>La prueba con var.equal = FALSE (Welch), obtiene t = -16,312 con df = 20544 (ajustados por la diferencia de varianzas) y un p-valor &lt; 2,2e-16, por lo que se mantiene la conclusión: existe una diferencia estadísticamente significativa entre las medias de “Sin auto” (96,08) y “Con auto” (99,80). El IC 95% para la diferencia va de -4,17 a -3,28, muy similar al obtenido con la prueba t clásica.</p>
+<p>Como se esperaba, el resultado no cambia sustancialmente frente a la prueba con varianzas iguales, aunque los grados de libertad sí se ajustaron bastante (de 360.334 a 20.544) para compensar la desigualdad de varianzas. Esta es la versión correcta y consistente con los supuestos verificados previamente, por lo que sería la que corresponde reportar como resultado final de esta comparación.</p>
+</div>
+<div id="tamaño-del-efecto" class="section level3 hasAnchor" number="2.3.7">
+<h3><span class="header-section-number">2.3.7</span> Tamaño del efecto<a href="parametros.html#tama%C3%B1o-del-efecto" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="parametros.html#cb18-1" tabindex="-1"></a><span class="fu">cohen.d</span>(sin_auto, con_auto, <span class="at">paired =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<pre><code>## 
+## Cohen&#39;s d
+## 
+## d estimate: -0.1244567 (negligible)
+## 95 percent confidence interval:
+##      lower      upper 
+## -0.1392403 -0.1096731</code></pre>
+<p>El tamaño del efecto (Cohen’s d) para la diferencia de costo entre “Sin auto” y “Con auto” fue d = -0,1245 (IC 95%: -0,1392 a -0,1097), lo que según los criterios convencionales de Cohen se clasifica como un efecto pequeño, casi negligible (valores por debajo de 0,2 se consideran de magnitud trivial).</p>
+<p>Esto confirma lo que ya se venía sospechando desde el resumen exploratorio inicial: aunque la prueba t arrojó un p-valor extremadamente pequeño (&lt; 2,2e-16), esa significancia estadística es en gran parte producto del tamaño de muestra tan grande (más de 360 mil observaciones), donde incluso diferencias mínimas terminan siendo “significativas”. En términos prácticos, la diferencia de costo entre tener o no auto es muy pequeña y probablemente no tenga mayor relevancia para la toma de decisiones. Este es un buen ejemplo de por qué siempre hay que complementar el p-valor con una medida de tamaño del efecto antes de sacar conclusiones sobre la importancia real de un resultado.</p>
+</div>
+</div>
+<div id="comparación-de-dos-medias-independientes-varianzas-distintas-welch-ventas-según-hijos-en-casa" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> Comparación de dos medias independientes (varianzas distintas, Welch): ventas según hijos en casa<a href="parametros.html#comparaci%C3%B3n-de-dos-medias-independientes-varianzas-distintas-welch-ventas-seg%C3%BAn-hijos-en-casa" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="preparación-de-datos-1" class="section level3 hasAnchor" number="2.4.1">
+<h3><span class="header-section-number">2.4.1</span> Preparación de datos<a href="parametros.html#preparaci%C3%B3n-de-datos-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="parametros.html#cb20-1" tabindex="-1"></a>df_hijoscasa <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb20-2"><a href="parametros.html#cb20-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">hijos_casa_grp =</span> <span class="fu">factor</span>(<span class="fu">ifelse</span>(num_children_at_home <span class="sc">==</span> <span class="dv">0</span>,</span>
+<span id="cb20-3"><a href="parametros.html#cb20-3" tabindex="-1"></a>                                         <span class="st">&quot;Sin hijos en casa&quot;</span>, <span class="st">&quot;Con hijos en casa&quot;</span>)))</span>
+<span id="cb20-4"><a href="parametros.html#cb20-4" tabindex="-1"></a></span>
+<span id="cb20-5"><a href="parametros.html#cb20-5" tabindex="-1"></a>sin_hijos <span class="ot">&lt;-</span> df_hijoscasa <span class="sc">%&gt;%</span> <span class="fu">filter</span>(hijos_casa_grp <span class="sc">==</span> <span class="st">&quot;Sin hijos en casa&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">pull</span>(<span class="st">`</span><span class="at">unit_sales(in millions)</span><span class="st">`</span>)</span>
+<span id="cb20-6"><a href="parametros.html#cb20-6" tabindex="-1"></a>con_hijos <span class="ot">&lt;-</span> df_hijoscasa <span class="sc">%&gt;%</span> <span class="fu">filter</span>(hijos_casa_grp <span class="sc">==</span> <span class="st">&quot;Con hijos en casa&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">pull</span>(<span class="st">`</span><span class="at">unit_sales(in millions)</span><span class="st">`</span>)</span></code></pre></div>
+</div>
+<div id="resumen-exploratorio-1" class="section level3 hasAnchor" number="2.4.2">
+<h3><span class="header-section-number">2.4.2</span> Resumen exploratorio<a href="parametros.html#resumen-exploratorio-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="parametros.html#cb21-1" tabindex="-1"></a>df_hijoscasa <span class="sc">%&gt;%</span></span>
+<span id="cb21-2"><a href="parametros.html#cb21-2" tabindex="-1"></a>  <span class="fu">group_by</span>(hijos_casa_grp) <span class="sc">%&gt;%</span></span>
+<span id="cb21-3"><a href="parametros.html#cb21-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">length</span>(<span class="st">`</span><span class="at">unit_sales(in millions)</span><span class="st">`</span>),</span>
+<span id="cb21-4"><a href="parametros.html#cb21-4" tabindex="-1"></a>            <span class="at">prom =</span> <span class="fu">mean</span>(<span class="st">`</span><span class="at">unit_sales(in millions)</span><span class="st">`</span>),</span>
+<span id="cb21-5"><a href="parametros.html#cb21-5" tabindex="-1"></a>            <span class="at">ds =</span> <span class="fu">sd</span>(<span class="st">`</span><span class="at">unit_sales(in millions)</span><span class="st">`</span>),</span>
+<span id="cb21-6"><a href="parametros.html#cb21-6" tabindex="-1"></a>            <span class="at">mediana =</span> <span class="fu">median</span>(<span class="st">`</span><span class="at">unit_sales(in millions)</span><span class="st">`</span>),</span>
+<span id="cb21-7"><a href="parametros.html#cb21-7" tabindex="-1"></a>            <span class="at">RIC =</span> <span class="fu">IQR</span>(<span class="st">`</span><span class="at">unit_sales(in millions)</span><span class="st">`</span>))</span></code></pre></div>
+<pre><code>## # A tibble: 2 × 6
+##   hijos_casa_grp         n  prom    ds mediana   RIC
+##   &lt;fct&gt;              &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;
+## 1 Con hijos en casa 116781  3.07 0.793       3     1
+## 2 Sin hijos en casa 243555  3.03 0.781       3     1</code></pre>
+<p>Se caracterizaron las ventas (unit_sales (in millions)) según si el hogar tiene o no hijos en casa. El grupo “Sin hijos en casa” es el más numeroso, con 243.555 observaciones (67,6%), frente a 116.781 (32,4%) del grupo “Con hijos en casa”. En cuanto a las ventas, el grupo “Con hijos en casa” presenta un promedio levemente superior (3,067) frente a “Sin hijos en casa” (3,033), aunque la mediana es idéntica en ambos grupos (3), lo que sugiere que la diferencia entre medias es mínima.</p>
+<p>Las desviaciones estándar son similares (0,793 y 0,781), aunque no idénticas, y el rango intercuartílico es el mismo (RIC = 1) en los dos grupos. El título del bloque ya indica que se trabajará con varianzas distintas (Welch), así que valdría la pena confirmar esa diferencia con la prueba F correspondiente antes de pasar al t-test.</p>
+</div>
+<div id="supuesto-de-normalidad-1" class="section level3 hasAnchor" number="2.4.3">
+<h3><span class="header-section-number">2.4.3</span> Supuesto de normalidad<a href="parametros.html#supuesto-de-normalidad-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="parametros.html#cb23-1" tabindex="-1"></a><span class="fu">ks.test</span>(<span class="fu">scale</span>(sin_hijos), <span class="st">&quot;pnorm&quot;</span>)</span></code></pre></div>
+<pre><code>## Warning in ks.test.default(scale(sin_hijos), &quot;pnorm&quot;): ties should not be
+## present for the one-sample Kolmogorov-Smirnov test</code></pre>
+<pre><code>## 
+##  Asymptotic one-sample Kolmogorov-Smirnov test
+## 
+## data:  scale(sin_hijos)
+## D = 0.24488, p-value &lt; 2.2e-16
+## alternative hypothesis: two-sided</code></pre>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="parametros.html#cb26-1" tabindex="-1"></a><span class="fu">ks.test</span>(<span class="fu">scale</span>(con_hijos), <span class="st">&quot;pnorm&quot;</span>)</span></code></pre></div>
+<pre><code>## Warning in ks.test.default(scale(con_hijos), &quot;pnorm&quot;): ties should not be
+## present for the one-sample Kolmogorov-Smirnov test</code></pre>
+<pre><code>## 
+##  Asymptotic one-sample Kolmogorov-Smirnov test
+## 
+## data:  scale(con_hijos)
+## D = 0.24505, p-value &lt; 2.2e-16
+## alternative hypothesis: two-sided</code></pre>
+<p>Se aplicó la prueba de Kolmogorov-Smirnov para evaluar normalidad, dado el gran tamaño de muestra de ambos grupos. En “Sin hijos en casa” se obtuvo D = 0,24488 con p-valor &lt; 2,2e-16, y en “Con hijos en casa” D = 0,24505 con p-valor &lt; 2,2e-16. En los dos casos el p-valor es mucho menor que 0,05, por lo que se rechaza la hipótesis nula de normalidad: ni “Sin hijos en casa” ni “Con hijos en casa” siguen una distribución normal.</p>
+<p>Este resultado es coherente con la naturaleza discreta de unit_sales, que probablemente toma pocos valores distintos (de ahí la advertencia de “ties” en ambos tests), lo cual hace que la distribución se aleje bastante de una normal continua. Al no cumplirse la normalidad, la comparación entre grupos debería resolverse con la prueba no paramétrica de Wilcoxon-Mann-Whitney en lugar de un t-test.</p>
+</div>
+<div id="supuesto-de-homocedasticidad-1" class="section level3 hasAnchor" number="2.4.4">
+<h3><span class="header-section-number">2.4.4</span> Supuesto de homocedasticidad<a href="parametros.html#supuesto-de-homocedasticidad-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="parametros.html#cb29-1" tabindex="-1"></a><span class="fu">var.test</span>(sin_hijos, con_hijos)</span></code></pre></div>
+<pre><code>## 
+##  F test to compare two variances
+## 
+## data:  sin_hijos and con_hijos
+## F = 0.96993, num df = 243554, denom df = 116780, p-value = 1.228e-09
+## alternative hypothesis: true ratio of variances is not equal to 1
+## 95 percent confidence interval:
+##  0.9604007 0.9795393
+## sample estimates:
+## ratio of variances 
+##          0.9699312</code></pre>
+<p>Se aplicó la prueba F para comparar las varianzas de las ventas entre “Sin hijos en casa” y “Con hijos en casa”, obteniendo F = 0,96993 (num df = 243554, denom df = 116780) con un p-valor = 1,228e-09. Como el p-valor es menor que 0,05, se rechaza la hipótesis nula de igualdad de varianzas, concluyendo que las varianzas de los dos grupos son estadísticamente distintas (razón de varianzas = 0,9699312, IC 95% entre 0,9604007 y 0,9795393).</p>
+<p>Este resultado justifica usar la corrección de Welch (var.equal = FALSE) en la prueba t, tal como ya se anticipó en el título del bloque. Al igual que en el caso anterior, aunque la diferencia es estadísticamente significativa, la razón de varianzas está muy cerca de 1, por lo que en la práctica ambos grupos tienen una dispersión de ventas bastante parecida; sin embargo, ya se estableció que no se cumple normalidad en ninguno de los dos grupos, así que lo que correspondería finalmente es la prueba de Wilcoxon-Mann-Whitney en lugar del t-test.</p>
+</div>
+<div id="prueba-t-de-welch" class="section level3 hasAnchor" number="2.4.5">
+<h3><span class="header-section-number">2.4.5</span> Prueba t de Welch<a href="parametros.html#prueba-t-de-welch" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="parametros.html#cb31-1" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">x =</span> sin_hijos, <span class="at">y =</span> con_hijos, <span class="at">var.equal =</span> <span class="cn">FALSE</span>, <span class="at">paired =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  sin_hijos and con_hijos
+## t = -12.349, df = 227107, p-value &lt; 2.2e-16
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -0.04017080 -0.02916606
+## sample estimates:
+## mean of x mean of y 
+##  3.032646  3.067314</code></pre>
+<p>Se aplicó la prueba t de Welch (var.equal = FALSE) para comparar las ventas entre “Sin hijos en casa” y “Con hijos en casa”, obteniendo t = -12,349 (df = 227107) con un p-valor &lt; 2,2e-16. Como el p-valor es menor que 0,05, se rechaza la hipótesis nula de igualdad de medias: existe una diferencia estadísticamente significativa entre los dos grupos. La media de “Sin hijos en casa” es 3,033 y la de “Con hijos en casa” es 3,067, con un IC 95% para la diferencia entre -0,0402 y -0,0292, es decir, los hogares sin hijos venden en promedio entre 0,029 y 0,040 millones de unidades menos.</p>
+<p>Vale la pena tener presente que, aunque el resultado es significativo, la diferencia entre las medias es muy pequeña en magnitud absoluta (apenas 0,035 de diferencia), por lo que convendría revisar el tamaño del efecto (Cohen’s d) antes de concluir que esta diferencia es relevante en la práctica, sobre todo considerando el tamaño de muestra tan grande de ambos grupos.</p>
+</div>
+<div id="tamaño-del-efecto-1" class="section level3 hasAnchor" number="2.4.6">
+<h3><span class="header-section-number">2.4.6</span> Tamaño del efecto<a href="parametros.html#tama%C3%B1o-del-efecto-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="parametros.html#cb33-1" tabindex="-1"></a><span class="fu">cohen.d</span>(sin_hijos, con_hijos, <span class="at">paired =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<pre><code>## 
+## Cohen&#39;s d
+## 
+## d estimate: -0.04419123 (negligible)
+## 95 percent confidence interval:
+##       lower       upper 
+## -0.05116817 -0.03721429</code></pre>
+<p>El tamaño del efecto (Cohen’s d) para la diferencia de ventas entre “Sin hijos en casa” y “Con hijos en casa” fue d = -0,04419123 (IC 95%: -0,05117 a -0,03721), lo que según los criterios de Cohen se clasifica como un efecto negligible, muy por debajo del umbral de 0,2 que se considera un efecto pequeño.</p>
+<p>Esto confirma que, aunque la prueba t de Welch arrojó un p-valor extremadamente pequeño (&lt; 2,2e-16), esa significancia estadística es producto casi exclusivamente del tamaño de muestra tan grande (más de 360 mil observaciones en total), y no de una diferencia real relevante entre los grupos. En términos prácticos, tener o no hijos en casa prácticamente no afecta el volumen de ventas, por lo que esta variable no parecería tener mayor utilidad como predictor si se buscara explicar o segmentar las ventas.</p>
+</div>
+</div>
+<div id="comparación-de-medias-pareadas-hijos-totales-vs.-hijos-que-viven-en-casa" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> Comparación de medias pareadas: hijos totales vs. hijos que viven en casa<a href="parametros.html#comparaci%C3%B3n-de-medias-pareadas-hijos-totales-vs.-hijos-que-viven-en-casa" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>A diferencia de las dos secciones anteriores, aquí las dos “muestras” no son grupos distintos de hogares, sino dos mediciones tomadas sobre el <strong>mismo</strong> hogar: cuántos hijos tiene en total (<code>total_children</code>) y cuántos de esos viven en casa (<code>num_children_at_home</code>). Por estar medidas sobre la misma unidad, se comparan como muestras pareadas.</p>
+<div id="datos" class="section level3 hasAnchor" number="2.5.1">
+<h3><span class="header-section-number">2.5.1</span> Datos<a href="parametros.html#datos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="parametros.html#cb35-1" tabindex="-1"></a>total_h <span class="ot">&lt;-</span> data<span class="sc">$</span>total_children</span>
+<span id="cb35-2"><a href="parametros.html#cb35-2" tabindex="-1"></a>casa_h <span class="ot">&lt;-</span> data<span class="sc">$</span>num_children_at_home</span></code></pre></div>
+</div>
+<div id="resumen-exploratorio-2" class="section level3 hasAnchor" number="2.5.2">
+<h3><span class="header-section-number">2.5.2</span> Resumen exploratorio<a href="parametros.html#resumen-exploratorio-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="parametros.html#cb36-1" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">variable =</span> <span class="fu">c</span>(<span class="st">&quot;total_children&quot;</span>, <span class="st">&quot;num_children_at_home&quot;</span>),</span>
+<span id="cb36-2"><a href="parametros.html#cb36-2" tabindex="-1"></a>           <span class="at">media =</span> <span class="fu">c</span>(<span class="fu">mean</span>(total_h), <span class="fu">mean</span>(casa_h)),</span>
+<span id="cb36-3"><a href="parametros.html#cb36-3" tabindex="-1"></a>           <span class="at">sd =</span> <span class="fu">c</span>(<span class="fu">sd</span>(total_h), <span class="fu">sd</span>(casa_h)),</span>
+<span id="cb36-4"><a href="parametros.html#cb36-4" tabindex="-1"></a>           <span class="at">mediana =</span> <span class="fu">c</span>(<span class="fu">median</span>(total_h), <span class="fu">median</span>(casa_h)))</span></code></pre></div>
+<pre><code>##               variable     media       sd mediana
+## 1       total_children 2.4564823 1.488992       2
+## 2 num_children_at_home 0.6893899 1.214732       0</code></pre>
+<p>En promedio, cada hogar tiene 2,4564823 hijos en total (total_children, DS = 1,488992), de los cuales solo 0,6893899 viven en casa (num_children_at_home, DS = 1,214732). Esto da una diferencia promedio de aproximadamente 1,767 hijos por hogar que, en promedio, no residen en el hogar registrado. La mediana refuerza esta lectura: mientras el hogar típico tiene 2 hijos en total, la mediana de hijos en casa es 0, es decir, más de la mitad de los hogares no tiene ningún hijo viviendo con ellos actualmente.</p>
+<p>Tiene sentido que total_children sea mayor que num_children_at_home, ya que por definición esta última es un subconjunto de la primera (no puede haber más hijos en casa que hijos totales). Además, la dispersión de total_children es mayor (DS = 1,49) que la de num_children_at_home (DS = 1,21), lo que sugiere que el número de hijos en casa está más concentrado en valores bajos, probablemente por la gran cantidad de hogares con 0 hijos en casa.</p>
+</div>
+<div id="supuesto-de-normalidad-2" class="section level3 hasAnchor" number="2.5.3">
+<h3><span class="header-section-number">2.5.3</span> Supuesto de normalidad<a href="parametros.html#supuesto-de-normalidad-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="parametros.html#cb38-1" tabindex="-1"></a><span class="fu">ks.test</span>(<span class="fu">scale</span>(total_h), <span class="st">&quot;pnorm&quot;</span>)</span></code></pre></div>
+<pre><code>## Warning in ks.test.default(scale(total_h), &quot;pnorm&quot;): ties should not be present
+## for the one-sample Kolmogorov-Smirnov test</code></pre>
+<pre><code>## 
+##  Asymptotic one-sample Kolmogorov-Smirnov test
+## 
+## data:  scale(total_h)
+## D = 0.14488, p-value &lt; 2.2e-16
+## alternative hypothesis: two-sided</code></pre>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="parametros.html#cb41-1" tabindex="-1"></a><span class="fu">ks.test</span>(<span class="fu">scale</span>(casa_h), <span class="st">&quot;pnorm&quot;</span>)</span></code></pre></div>
+<pre><code>## Warning in ks.test.default(scale(casa_h), &quot;pnorm&quot;): ties should not be present
+## for the one-sample Kolmogorov-Smirnov test</code></pre>
+<pre><code>## 
+##  Asymptotic one-sample Kolmogorov-Smirnov test
+## 
+## data:  scale(casa_h)
+## D = 0.39073, p-value &lt; 2.2e-16
+## alternative hypothesis: two-sided</code></pre>
+<p>Se aplicó la prueba de Kolmogorov-Smirnov para evaluar normalidad en ambas variables. Para total_children se obtuvo D = 0,14488 con p-valor &lt; 2,2e-16, y para num_children_at_home D = 0,39073 con p-valor &lt; 2,2e-16. En ambos casos se rechaza la hipótesis nula de normalidad, siendo el alejamiento mucho más marcado en num_children_at_home (D casi el triple).</p>
+<p>Este resultado era totalmente esperable: ambas son variables de conteo con solo 6 valores posibles (0 a 5), por lo que su distribución es discreta y no puede aproximarse a una normal continua, sin importar el tamaño de la muestra. Las advertencias de “ties” en ambos tests confirman justamente eso, que hay muchísimos valores repetidos. Al no cumplirse normalidad, la comparación entre total_children y num_children_at_home debe hacerse con la alternativa no paramétrica para muestras pareadas (Wilcoxon pareado) en lugar de la t pareada.</p>
+</div>
+<div id="prueba-t-pareada" class="section level3 hasAnchor" number="2.5.4">
+<h3><span class="header-section-number">2.5.4</span> Prueba t pareada<a href="parametros.html#prueba-t-pareada" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="parametros.html#cb44-1" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">x =</span> total_h, <span class="at">y =</span> casa_h, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## 
+##  Paired t-test
+## 
+## data:  total_h and casa_h
+## t = 685.68, df = 360335, p-value &lt; 2.2e-16
+## alternative hypothesis: true mean difference is not equal to 0
+## 95 percent confidence interval:
+##  1.762041 1.772144
+## sample estimates:
+## mean difference 
+##        1.767092</code></pre>
+<p>Se aplicó la prueba t pareada para comparar total_children y num_children_at_home dentro del mismo hogar, obteniendo t = 685,68 (df = 360335) con un p-valor &lt; 2,2e-16. Esto indica una diferencia estadísticamente muy significativa entre ambas mediciones: en promedio, cada hogar tiene 1,767092 hijos más en total que hijos viviendo en casa (IC 95%: 1,762041 a 1,772144).</p>
+<p>A diferencia de los casos anteriores donde el tamaño del efecto resultaba negligible, aquí la diferencia sí parece sustancial en términos prácticos: casi 1,77 hijos de diferencia por hogar es una magnitud considerable frente a una media de total_children de apenas 2,46, es decir, más del 70% de los hijos totales en promedio no viven en el hogar. Aun así, dado que no se cumple el supuesto de normalidad, esta conclusión debería confirmarse con la prueba de Wilcoxon pareado antes de darla como definitiva.</p>
+</div>
+<div id="tamaño-del-efecto-2" class="section level3 hasAnchor" number="2.5.5">
+<h3><span class="header-section-number">2.5.5</span> Tamaño del efecto<a href="parametros.html#tama%C3%B1o-del-efecto-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="parametros.html#cb46-1" tabindex="-1"></a><span class="fu">cohen.d</span>(total_h, casa_h, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## 
+## Cohen&#39;s d
+## 
+## d estimate: 1.293119 (large)
+## 95 percent confidence interval:
+##    lower    upper 
+## 1.288110 1.298127</code></pre>
+<p>El tamaño del efecto (Cohen’s d) para la diferencia pareada entre total_children y num_children_at_home fue d = 1,293119 (IC 95%: 1,28811 a 1,298127), lo que según los criterios de Cohen se clasifica como un efecto grande, muy por encima del umbral de 0,8 que se considera un efecto grande.</p>
+<p>Este resultado confirma lo que ya se intuía en el paso anterior: a diferencia de las comparaciones de grupos independientes vistas antes (donde la significancia estadística no se traducía en una diferencia relevante en la práctica), aquí sí hay una diferencia sustancial y consistente entre el número total de hijos y el número de hijos que viven en casa. Esto tiene sentido en el contexto de los datos: la mayoría de los hijos registrados en total_children simplemente no residen en el hogar reportado, lo que constituye un hallazgo relevante sobre la estructura familiar de los hogares en este dataset.</p>
+</div>
+</div>
+<div id="comparación-no-paramétrica-de-dos-grupos-independientes-ventas-de-tienda-según-cantidad-de-hijos-totales" class="section level2 hasAnchor" number="2.6">
+<h2><span class="header-section-number">2.6</span> Comparación no paramétrica de dos grupos independientes: ventas de tienda según cantidad de hijos totales<a href="parametros.html#comparaci%C3%B3n-no-param%C3%A9trica-de-dos-grupos-independientes-ventas-de-tienda-seg%C3%BAn-cantidad-de-hijos-totales" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="datos-1" class="section level3 hasAnchor" number="2.6.1">
+<h3><span class="header-section-number">2.6.1</span> Datos<a href="parametros.html#datos-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Comparamos los dos extremos de <code>total_children</code> (pocos hijos vs. muchos hijos), dejando fuera los valores intermedios (2-3) para que la comparación sea más clara.</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="parametros.html#cb48-1" tabindex="-1"></a>df_nopar <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb48-2"><a href="parametros.html#cb48-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">grupo_hijos =</span> <span class="fu">case_when</span>(</span>
+<span id="cb48-3"><a href="parametros.html#cb48-3" tabindex="-1"></a>    total_children <span class="sc">&lt;=</span> <span class="dv">1</span> <span class="sc">~</span> <span class="st">&quot;Pocos hijos (0-1)&quot;</span>,</span>
+<span id="cb48-4"><a href="parametros.html#cb48-4" tabindex="-1"></a>    total_children <span class="sc">&gt;=</span> <span class="dv">4</span> <span class="sc">~</span> <span class="st">&quot;Muchos hijos (4-5)&quot;</span>,</span>
+<span id="cb48-5"><a href="parametros.html#cb48-5" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="cn">NA_character_</span></span>
+<span id="cb48-6"><a href="parametros.html#cb48-6" tabindex="-1"></a>  )) <span class="sc">%&gt;%</span></span>
+<span id="cb48-7"><a href="parametros.html#cb48-7" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(grupo_hijos)) <span class="sc">%&gt;%</span></span>
+<span id="cb48-8"><a href="parametros.html#cb48-8" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">grupo_hijos =</span> <span class="fu">factor</span>(grupo_hijos))</span></code></pre></div>
+</div>
+<div id="resumen-exploratorio-3" class="section level3 hasAnchor" number="2.6.2">
+<h3><span class="header-section-number">2.6.2</span> Resumen exploratorio<a href="parametros.html#resumen-exploratorio-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="parametros.html#cb49-1" tabindex="-1"></a>df_nopar <span class="sc">%&gt;%</span></span>
+<span id="cb49-2"><a href="parametros.html#cb49-2" tabindex="-1"></a>  <span class="fu">group_by</span>(grupo_hijos) <span class="sc">%&gt;%</span></span>
+<span id="cb49-3"><a href="parametros.html#cb49-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">length</span>(<span class="st">`</span><span class="at">store_sales(in millions)</span><span class="st">`</span>),</span>
+<span id="cb49-4"><a href="parametros.html#cb49-4" tabindex="-1"></a>            <span class="at">prom =</span> <span class="fu">mean</span>(<span class="st">`</span><span class="at">store_sales(in millions)</span><span class="st">`</span>),</span>
+<span id="cb49-5"><a href="parametros.html#cb49-5" tabindex="-1"></a>            <span class="at">mediana =</span> <span class="fu">median</span>(<span class="st">`</span><span class="at">store_sales(in millions)</span><span class="st">`</span>),</span>
+<span id="cb49-6"><a href="parametros.html#cb49-6" tabindex="-1"></a>            <span class="at">RIC =</span> <span class="fu">IQR</span>(<span class="st">`</span><span class="at">store_sales(in millions)</span><span class="st">`</span>))</span></code></pre></div>
+<pre><code>## # A tibble: 2 × 5
+##   grupo_hijos             n  prom mediana   RIC
+##   &lt;fct&gt;               &lt;int&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;
+## 1 Muchos hijos (4-5) 103612  6.68    6.28  4.94
+## 2 Pocos hijos (0-1)  111298  6.11    5.61  4.38</code></pre>
+<p>Se compararon los dos extremos de total_children, dejando fuera los valores intermedios (2-3) para hacer más clara la comparación. El grupo “Pocos hijos (0-1)” es levemente más numeroso, con 111.298 observaciones, frente a 103.612 de “Muchos hijos (4-5)”. En cuanto a store_sales, el grupo “Muchos hijos (4-5)” presenta un promedio superior (6,677) frente a “Pocos hijos (0-1)” (6,112), diferencia que se mantiene en la mediana (6,28 frente a 5,61).</p>
+<p>El rango intercuartílico es algo mayor en “Muchos hijos” (4,94) que en “Pocos hijos” (4,38), lo que sugiere una dispersión levemente mayor de las ventas en ese grupo. A diferencia de las comparaciones anteriores (auto, hijos en casa), aquí la diferencia entre grupos se ve más marcada tanto en la media como en la mediana, lo que podría anticipar un resultado con mayor relevancia práctica en las pruebas siguientes.</p>
+</div>
+<div id="supuesto-de-normalidad-comparando-ks-y-lilliefors" class="section level3 hasAnchor" number="2.6.3">
+<h3><span class="header-section-number">2.6.3</span> Supuesto de normalidad (comparando KS y Lilliefors)<a href="parametros.html#supuesto-de-normalidad-comparando-ks-y-lilliefors" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="parametros.html#cb51-1" tabindex="-1"></a>df_nopar <span class="sc">%&gt;%</span></span>
+<span id="cb51-2"><a href="parametros.html#cb51-2" tabindex="-1"></a>  <span class="fu">group_by</span>(grupo_hijos) <span class="sc">%&gt;%</span></span>
+<span id="cb51-3"><a href="parametros.html#cb51-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">length</span>(<span class="st">`</span><span class="at">store_sales(in millions)</span><span class="st">`</span>),</span>
+<span id="cb51-4"><a href="parametros.html#cb51-4" tabindex="-1"></a>            <span class="at">est_ks =</span> <span class="fu">ks.test</span>(<span class="fu">scale</span>(<span class="st">`</span><span class="at">store_sales(in millions)</span><span class="st">`</span>), <span class="st">&quot;pnorm&quot;</span>)<span class="sc">$</span>statistic,</span>
+<span id="cb51-5"><a href="parametros.html#cb51-5" tabindex="-1"></a>            <span class="at">p_ks =</span> <span class="fu">ks.test</span>(<span class="fu">scale</span>(<span class="st">`</span><span class="at">store_sales(in millions)</span><span class="st">`</span>), <span class="st">&quot;pnorm&quot;</span>)<span class="sc">$</span>p.value,</span>
+<span id="cb51-6"><a href="parametros.html#cb51-6" tabindex="-1"></a>            <span class="at">est_l =</span> <span class="fu">lillie.test</span>(<span class="st">`</span><span class="at">store_sales(in millions)</span><span class="st">`</span>)<span class="sc">$</span>statistic,</span>
+<span id="cb51-7"><a href="parametros.html#cb51-7" tabindex="-1"></a>            <span class="at">p_l =</span> <span class="fu">lillie.test</span>(<span class="st">`</span><span class="at">store_sales(in millions)</span><span class="st">`</span>)<span class="sc">$</span>p.value)</span></code></pre></div>
+<pre><code>## Warning: There were 4 warnings in `summarise()`.
+## The first warning was:
+## ℹ In argument: `est_ks = ks.test(scale(`store_sales(in millions)`),
+##   &quot;pnorm&quot;)$statistic`.
+## ℹ In group 1: `grupo_hijos = Muchos hijos (4-5)`.
+## Caused by warning in `ks.test.default()`:
+## ! ties should not be present for the one-sample Kolmogorov-Smirnov test
+## ℹ Run `dplyr::last_dplyr_warnings()` to see the 3 remaining warnings.</code></pre>
+<pre><code>## # A tibble: 2 × 6
+##   grupo_hijos             n est_ks  p_ks  est_l   p_l
+##   &lt;fct&gt;               &lt;int&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;
+## 1 Muchos hijos (4-5) 103612 0.0680     0 0.0680     0
+## 2 Pocos hijos (0-1)  111298 0.0696     0 0.0696     0</code></pre>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="parametros.html#cb54-1" tabindex="-1"></a><span class="co"># no se incluye shapiro.test() porque tiene un límite de 5000 datos y cada grupo tiene miles de filas</span></span></code></pre></div>
+<p>Se compararon dos pruebas de normalidad para store_sales en ambos grupos: Kolmogorov-Smirnov (KS) y Lilliefors. En “Muchos hijos (4-5)” se obtuvo D = 0,06795 y en “Pocos hijos (0-1)” D = 0,06961, con p-valor prácticamente 0 en ambos casos y en ambas pruebas. Es decir, KS y Lilliefors coinciden completamente en su conclusión: se rechaza la hipótesis nula de normalidad para los dos grupos.</p>
+<p>Esto confirma que la falta de normalidad no es un artefacto de la prueba elegida, sino una característica real de los datos, y refuerza la decisión de usar Lilliefors como corrección más apropiada para el tamaño de muestra de este dataset (dado que Shapiro no puede aplicarse aquí por el límite de 5.000 observaciones). Al no cumplirse normalidad en ninguno de los dos grupos, la comparación correspondiente sería mediante la prueba no paramétrica de Wilcoxon-Mann-Whitney.</p>
+</div>
+<div id="supuesto-de-homogeneidad-de-varianzas" class="section level3 hasAnchor" number="2.6.4">
+<h3><span class="header-section-number">2.6.4</span> Supuesto de homogeneidad de varianzas<a href="parametros.html#supuesto-de-homogeneidad-de-varianzas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="parametros.html#cb55-1" tabindex="-1"></a><span class="fu">leveneTest</span>(<span class="st">`</span><span class="at">store_sales(in millions)</span><span class="st">`</span> <span class="sc">~</span> grupo_hijos, <span class="at">data =</span> df_nopar, <span class="at">center =</span> median)</span></code></pre></div>
+<pre><code>## Levene&#39;s Test for Homogeneity of Variance (center = median)
+##           Df F value    Pr(&gt;F)    
+## group      1  1107.4 &lt; 2.2e-16 ***
+##       214908                      
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>Se aplicó la prueba de Levene (centrada en la mediana, más robusta cuando no hay normalidad) para evaluar homogeneidad de varianzas de store_sales entre “Pocos hijos (0-1)” y “Muchos hijos (4-5)”. El resultado fue F = 1107,4 (df = 1, 214908) con un p-valor &lt; 2,2e-16, por lo que se rechaza la hipótesis nula de igualdad de varianzas: existe evidencia fuerte de que las varianzas de los dos grupos son distintas.</p>
+<p>A diferencia de los casos anteriores donde la prueba F clásica también señalaba diferencias pero de magnitud casi trivial, aquí el estadístico F es bastante alto, lo que sugiere que la heterogeneidad de varianzas es más marcada entre estos dos grupos. En cualquier caso, esto es coherente con la decisión ya tomada de usar la prueba no paramétrica de Wilcoxon-Mann-Whitney, para la cual la homogeneidad de varianzas no es un requisito estricto.</p>
+</div>
+<div id="prueba-de-wilcoxon-mann-whitney" class="section level3 hasAnchor" number="2.6.5">
+<h3><span class="header-section-number">2.6.5</span> Prueba de Wilcoxon (Mann-Whitney)<a href="parametros.html#prueba-de-wilcoxon-mann-whitney" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="parametros.html#cb57-1" tabindex="-1"></a><span class="fu">wilcox.test</span>(<span class="st">`</span><span class="at">store_sales(in millions)</span><span class="st">`</span> <span class="sc">~</span> grupo_hijos, <span class="at">data =</span> df_nopar)</span></code></pre></div>
+<pre><code>## 
+##  Wilcoxon rank sum test with continuity correction
+## 
+## data:  store_sales(in millions) by grupo_hijos
+## W = 6245335679, p-value &lt; 2.2e-16
+## alternative hypothesis: true location shift is not equal to 0</code></pre>
+<p>Se aplicó la prueba de Wilcoxon-Mann-Whitney para comparar store_sales entre “Pocos hijos (0-1)” y “Muchos hijos (4-5)”, dado que ninguno de los dos grupos cumplió el supuesto de normalidad (confirmado tanto con KS como con Lilliefors) ni el de homogeneidad de varianzas (Levene). Se optó por esta prueba en lugar del t-test porque Wilcoxon-Mann-Whitney no exige normalidad y compara las distribuciones completas (a través de los rangos) en lugar de asumir que las medias son representativas de cada grupo.</p>
+<p>El resultado fue W = 6.245.335.679 con un p-valor &lt; 2,2e-16, por lo que se rechaza la hipótesis nula de que no hay diferencia de localización entre los dos grupos: existe una diferencia estadísticamente significativa entre las distribuciones de ventas de ambos grupos. Esto es consistente con lo observado en el resumen exploratorio inicial, donde “Muchos hijos (4-5)” ya mostraba una media y mediana de ventas más altas que “Pocos hijos (0-1)”.</p>
+</div>
+<div id="tamaño-del-efecto-3" class="section level3 hasAnchor" number="2.6.6">
+<h3><span class="header-section-number">2.6.6</span> Tamaño del efecto<a href="parametros.html#tama%C3%B1o-del-efecto-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="parametros.html#cb59-1" tabindex="-1"></a>df_nopar <span class="sc">%&gt;%</span> <span class="fu">wilcox_effsize</span>(<span class="st">`</span><span class="at">store_sales(in millions)</span><span class="st">`</span> <span class="sc">~</span> grupo_hijos)</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 7
+##   .y.                      group1         group2 effsize     n1     n2 magnitude
+## * &lt;chr&gt;                    &lt;chr&gt;          &lt;chr&gt;    &lt;dbl&gt;  &lt;int&gt;  &lt;int&gt; &lt;ord&gt;    
+## 1 store_sales(in millions) Muchos hijos … Pocos…  0.0720 103612 111298 small</code></pre>
+<p>El tamaño del efecto no paramétrico (r de Wilcoxon) para la diferencia de ventas entre “Muchos hijos (4-5)” (n = 103.612) y “Pocos hijos (0-1)” (n = 111.298) fue r = 0,07196347, clasificado por la función como magnitud “small” (pequeña).</p>
+<p>Aunque la prueba de Wilcoxon detectó una diferencia estadísticamente muy significativa (p &lt; 2,2e-16), el tamaño real de esa diferencia es pequeño según esta clasificación, lo que confirma nuevamente que, con un tamaño de muestra tan grande, la significancia estadística no necesariamente implica una diferencia de gran relevancia práctica entre los grupos.</p>
+</div>
+</div>
+<div id="comparación-no-paramétrica-pareada-hijos-totales-vs.-hijos-en-casa-alternativa-a-la-prueba-t" class="section level2 hasAnchor" number="2.7">
+<h2><span class="header-section-number">2.7</span> Comparación no paramétrica pareada: hijos totales vs. hijos en casa (alternativa a la prueba t)<a href="parametros.html#comparaci%C3%B3n-no-param%C3%A9trica-pareada-hijos-totales-vs.-hijos-en-casa-alternativa-a-la-prueba-t" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Dado que en la Sección 3 el supuesto de normalidad probablemente no se cumple (son conteos con solo 6 valores posibles), aquí se repite la comparación pareada con la alternativa no paramétrica.</p>
+<div id="prueba-de-wilcoxon-pareada" class="section level3 hasAnchor" number="2.7.1">
+<h3><span class="header-section-number">2.7.1</span> Prueba de Wilcoxon pareada<a href="parametros.html#prueba-de-wilcoxon-pareada" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="parametros.html#cb61-1" tabindex="-1"></a><span class="fu">wilcox.test</span>(<span class="at">x =</span> total_h, <span class="at">y =</span> casa_h, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## 
+##  Wilcoxon signed rank test with continuity correction
+## 
+## data:  total_h and casa_h
+## V = 3.3996e+10, p-value &lt; 2.2e-16
+## alternative hypothesis: true location shift is not equal to 0</code></pre>
+<p>Se aplicó la prueba de Wilcoxon pareada (Wilcoxon signed-rank test) entre total_children y num_children_at_home, obteniendo V = 3,3996e+10 con un p-valor &lt; 2,2e-16, por lo que se rechaza la hipótesis nula de que no hay diferencia de localización entre las dos mediciones: existe una diferencia significativa entre el número total de hijos y el número de hijos que viven en casa.</p>
+<p>Al comparar con la prueba t pareada de la Sección 3 (t = 685,68, p &lt; 2,2e-16), la decisión final no cambia: ambas pruebas, la paramétrica y la no paramétrica, coinciden en rechazar la hipótesis nula y llegar a la misma conclusión. Esto tiene sentido dado que, aunque la t pareada asumía una normalidad que no se cumplía, la diferencia entre total_children y num_children_at_home es tan grande y consistente (recordemos el Cohen’s d = 1,29, un efecto grande) que ambas pruebas detectan la misma señal sin ambigüedad. Esto refuerza la robustez de la conclusión: los hogares tienen, en promedio, considerablemente más hijos totales que hijos viviendo actualmente en casa.</p>
+</div>
+<div id="tamaño-del-efecto-4" class="section level3 hasAnchor" number="2.7.2">
+<h3><span class="header-section-number">2.7.2</span> Tamaño del efecto<a href="parametros.html#tama%C3%B1o-del-efecto-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="parametros.html#cb63-1" tabindex="-1"></a>data_larga_hogar<span class="ot">&lt;-</span><span class="fu">data.frame</span>(</span>
+<span id="cb63-2"><a href="parametros.html#cb63-2" tabindex="-1"></a>  <span class="at">hogar_id =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(total_h), <span class="dv">2</span>),</span>
+<span id="cb63-3"><a href="parametros.html#cb63-3" tabindex="-1"></a>  <span class="at">variable =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;total_children&quot;</span>, <span class="st">&quot;num_children_at_home&quot;</span>), <span class="at">each =</span> <span class="fu">length</span>(total_h)),</span>
+<span id="cb63-4"><a href="parametros.html#cb63-4" tabindex="-1"></a>  <span class="at">valor =</span> <span class="fu">c</span>(total_h, casa_h)</span>
+<span id="cb63-5"><a href="parametros.html#cb63-5" tabindex="-1"></a>)</span>
+<span id="cb63-6"><a href="parametros.html#cb63-6" tabindex="-1"></a>data_larga_hogar <span class="sc">%&gt;%</span> <span class="fu">wilcox_effsize</span>(valor <span class="sc">~</span> variable, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 7
+##   .y.   group1               group2         effsize     n1     n2 magnitude
+## * &lt;chr&gt; &lt;chr&gt;                &lt;chr&gt;            &lt;dbl&gt;  &lt;int&gt;  &lt;int&gt; &lt;ord&gt;    
+## 1 valor num_children_at_home total_children   0.811 360336 360336 large</code></pre>
+<p>El tamaño del efecto no paramétrico (r de Wilcoxon) para la diferencia pareada entre total_children y num_children_at_home fue r = 0,8107739 (n1 = n2 = 360.336), clasificado por la función como magnitud “large” (grande).</p>
+<p>Este resultado es totalmente consistente con lo encontrado en la Sección 3 con el Cohen’s d de la prueba t pareada (d = 1,29, también “large”): tanto la versión paramétrica como la no paramétrica coinciden en que la diferencia entre el número total de hijos y el número de hijos que viven en casa no solo es estadísticamente significativa, sino que además tiene una magnitud considerable en términos prácticos. Esto refuerza que, a diferencia de las comparaciones anteriores (auto, hijos en casa, grupo de hijos), aquí sí hay una diferencia real y relevante dentro de los hogares del dataset.</p>
+</div>
+</div>
+<div id="anova-de-un-factor-costo-según-número-de-hijos-totales" class="section level2 hasAnchor" number="2.8">
+<h2><span class="header-section-number">2.8</span> ANOVA de un factor: costo según número de hijos totales<a href="parametros.html#anova-de-un-factor-costo-seg%C3%BAn-n%C3%BAmero-de-hijos-totales" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Al igual que en el proyecto anterior, el ANOVA se construye manualmente (sumas de cuadrados y estadístico F) para mostrar de dónde sale cada componente, esta vez usando los 6 grupos naturales de <code>total_children</code> (0 a 5) en vez de datos hechos a mano.</p>
+<div id="tamaños-de-muestra-y-promedios-por-grupo" class="section level3 hasAnchor" number="2.8.1">
+<h3><span class="header-section-number">2.8.1</span> Tamaños de muestra y promedios por grupo<a href="parametros.html#tama%C3%B1os-de-muestra-y-promedios-por-grupo" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="parametros.html#cb65-1" tabindex="-1"></a>df_hogar <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">total_children_f =</span> <span class="fu">factor</span>(total_children))</span>
+<span id="cb65-2"><a href="parametros.html#cb65-2" tabindex="-1"></a></span>
+<span id="cb65-3"><a href="parametros.html#cb65-3" tabindex="-1"></a>resumen_grupos <span class="ot">&lt;-</span> df_hogar <span class="sc">%&gt;%</span></span>
+<span id="cb65-4"><a href="parametros.html#cb65-4" tabindex="-1"></a>  <span class="fu">group_by</span>(total_children_f) <span class="sc">%&gt;%</span></span>
+<span id="cb65-5"><a href="parametros.html#cb65-5" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">length</span>(cost), <span class="at">media =</span> <span class="fu">mean</span>(cost))</span>
+<span id="cb65-6"><a href="parametros.html#cb65-6" tabindex="-1"></a></span>
+<span id="cb65-7"><a href="parametros.html#cb65-7" tabindex="-1"></a>resumen_grupos</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 3
+##   total_children_f     n media
+##   &lt;fct&gt;            &lt;int&gt; &lt;dbl&gt;
+## 1 0                36441 100. 
+## 2 1                74857 101. 
+## 3 2                73902  98.3
+## 4 3                71524 100. 
+## 5 4                70134  98.7
+## 6 5                33478 101.</code></pre>
+<p>Se resumió cost según los 6 niveles de total_children_f (0 a 5 hijos). Los tamaños de grupo son bastante grandes y varían entre 33.478 (grupo 5) y 74.857 (grupo 1), sin un desbalance tan extremo como en las comparaciones de dos grupos vistas antes.</p>
+<p>A simple vista, las medias de los 6 grupos se ven muy parecidas entre sí, oscilando en un rango estrecho entre 98,34 (grupo 2) y 100,60 (grupo 5), es decir, una diferencia máxima de apenas 2,26 unidades entre el grupo con menor y mayor promedio. No se observa un patrón claro o creciente/decreciente asociado al número de hijos; más bien las medias parecen fluctuar alrededor de un valor similar (~99-100) sin una tendencia definida. Esto sugiere que, aunque la prueba F de ANOVA podría llegar a detectar diferencias significativas dado el gran tamaño de muestra de cada grupo, es probable que la magnitud real de esas diferencias sea pequeña, similar a lo que ya se ha visto en comparaciones anteriores de este dataset.</p>
+</div>
+<div id="sumas-de-cuadrados-y-estadístico-f-manual" class="section level3 hasAnchor" number="2.8.2">
+<h3><span class="header-section-number">2.8.2</span> Sumas de cuadrados y estadístico F (manual)<a href="parametros.html#sumas-de-cuadrados-y-estad%C3%ADstico-f-manual" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="parametros.html#cb67-1" tabindex="-1"></a>k <span class="ot">&lt;-</span> <span class="fu">nrow</span>(resumen_grupos)   </span>
+<span id="cb67-2"><a href="parametros.html#cb67-2" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="fu">nrow</span>(df_hogar)         </span>
+<span id="cb67-3"><a href="parametros.html#cb67-3" tabindex="-1"></a>xbar_total <span class="ot">&lt;-</span> <span class="fu">mean</span>(df_hogar<span class="sc">$</span>cost)</span>
+<span id="cb67-4"><a href="parametros.html#cb67-4" tabindex="-1"></a></span>
+<span id="cb67-5"><a href="parametros.html#cb67-5" tabindex="-1"></a>SSA <span class="ot">&lt;-</span> resumen_grupos <span class="sc">%&gt;%</span></span>
+<span id="cb67-6"><a href="parametros.html#cb67-6" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">SSA =</span> <span class="fu">sum</span>(n <span class="sc">*</span> (media <span class="sc">-</span> xbar_total)<span class="sc">^</span><span class="dv">2</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb67-7"><a href="parametros.html#cb67-7" tabindex="-1"></a>  <span class="fu">pull</span>(SSA)</span>
+<span id="cb67-8"><a href="parametros.html#cb67-8" tabindex="-1"></a></span>
+<span id="cb67-9"><a href="parametros.html#cb67-9" tabindex="-1"></a>SST <span class="ot">&lt;-</span> <span class="fu">sum</span>((df_hogar<span class="sc">$</span>cost <span class="sc">-</span> xbar_total)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb67-10"><a href="parametros.html#cb67-10" tabindex="-1"></a>SSE <span class="ot">&lt;-</span> SST <span class="sc">-</span> SSA</span>
+<span id="cb67-11"><a href="parametros.html#cb67-11" tabindex="-1"></a></span>
+<span id="cb67-12"><a href="parametros.html#cb67-12" tabindex="-1"></a>MSA <span class="ot">&lt;-</span> SSA <span class="sc">/</span> (k <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb67-13"><a href="parametros.html#cb67-13" tabindex="-1"></a>MSE <span class="ot">&lt;-</span> SSE <span class="sc">/</span> (N <span class="sc">-</span> k)</span>
+<span id="cb67-14"><a href="parametros.html#cb67-14" tabindex="-1"></a></span>
+<span id="cb67-15"><a href="parametros.html#cb67-15" tabindex="-1"></a>F_estadistico <span class="ot">&lt;-</span> MSA <span class="sc">/</span> MSE</span>
+<span id="cb67-16"><a href="parametros.html#cb67-16" tabindex="-1"></a></span>
+<span id="cb67-17"><a href="parametros.html#cb67-17" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
+<span id="cb67-18"><a href="parametros.html#cb67-18" tabindex="-1"></a>v1 <span class="ot">&lt;-</span> k <span class="sc">-</span> <span class="dv">1</span></span>
+<span id="cb67-19"><a href="parametros.html#cb67-19" tabindex="-1"></a>v2 <span class="ot">&lt;-</span> N <span class="sc">-</span> k</span>
+<span id="cb67-20"><a href="parametros.html#cb67-20" tabindex="-1"></a>F_critico <span class="ot">&lt;-</span> <span class="fu">qf</span>(<span class="dv">1</span> <span class="sc">-</span> alpha, <span class="at">df1 =</span> v1, <span class="at">df2 =</span> v2)</span>
+<span id="cb67-21"><a href="parametros.html#cb67-21" tabindex="-1"></a>p_valor <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pf</span>(F_estadistico, v1, v2)</span>
+<span id="cb67-22"><a href="parametros.html#cb67-22" tabindex="-1"></a></span>
+<span id="cb67-23"><a href="parametros.html#cb67-23" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">F =</span> F_estadistico, <span class="at">F_critico =</span> F_critico, <span class="at">p_valor =</span> p_valor)</span></code></pre></div>
+<pre><code>##          F F_critico p_valor
+## 1 70.44768  2.214124       0</code></pre>
+<p>Se calculó manualmente el ANOVA de un factor para comparar cost entre los 6 niveles de total_children, obteniendo F = 70,44768, mientras que el valor crítico para α = 0,05 es F_crítico = 2,214124. Como F (70,45) es mucho mayor que F_crítico (2,21), se rechaza la hipótesis nula de igualdad de medias; esto también se confirma con el p-valor, que resultó prácticamente 0 (menor que α = 0,05).</p>
+<p>Esto indica que sí existe una diferencia estadísticamente significativa en el costo promedio entre al menos dos de los grupos de total_children. Sin embargo, tal como se anticipó en el resumen exploratorio, las medias de los 6 grupos eran muy parecidas entre sí (rango de apenas 2,26 unidades), por lo que —igual que en los casos anteriores— esta significancia probablemente refleje más el enorme tamaño de muestra que una diferencia realmente relevante en la práctica; valdría la pena complementar este resultado con una medida de tamaño del efecto (por ejemplo, eta cuadrado) antes de sacar conclusiones definitivas sobre la importancia de total_children en el costo.</p>
+<p>Verificación con <code>aov()</code></p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="parametros.html#cb69-1" tabindex="-1"></a>modelo_aov <span class="ot">&lt;-</span> <span class="fu">aov</span>(cost <span class="sc">~</span> total_children_f, <span class="at">data =</span> df_hogar)</span>
+<span id="cb69-2"><a href="parametros.html#cb69-2" tabindex="-1"></a><span class="fu">summary</span>(modelo_aov)</span></code></pre></div>
+<pre><code>##                      Df    Sum Sq Mean Sq F value Pr(&gt;F)    
+## total_children_f      5    315432   63086   70.45 &lt;2e-16 ***
+## Residuals        360330 322677959     896                   
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>Al verificar con aov(), el resultado coincide con el cálculo manual: F = 70,45 (df1 = 5, df2 = 360.330) con un p-valor &lt; 2e-16, prácticamente idéntico a los F = 70,44768 y p-valor ≈ 0 obtenidos a mano. Esto confirma que el procedimiento manual replicó correctamente el ANOVA de un factor, y refuerza la conclusión de que existe una diferencia estadísticamente significativa en cost entre al menos dos de los grupos de total_children.</p>
+<p>Con esto ya queda validado el resultado del ANOVA; el siguiente paso lógico sería complementar con un tamaño del efecto (eta cuadrado) y, si se confirma diferencia, con comparaciones post-hoc para identificar específicamente entre qué grupos está esa diferencia.</p>
+</div>
+<div id="tamaño-del-efecto-eta-cuadrado" class="section level3 hasAnchor" number="2.8.3">
+<h3><span class="header-section-number">2.8.3</span> Tamaño del efecto (eta cuadrado)<a href="parametros.html#tama%C3%B1o-del-efecto-eta-cuadrado" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="parametros.html#cb71-1" tabindex="-1"></a>df_hogar <span class="sc">%&gt;%</span> <span class="fu">anova_test</span>(cost <span class="sc">~</span> total_children_f)</span></code></pre></div>
+<pre><code>## ANOVA Table (type II tests)
+## 
+##             Effect DFn    DFd      F        p p&lt;.05      ges
+## 1 total_children_f   5 360330 70.448 6.28e-74     * 0.000977</code></pre>
+<p>El tamaño del efecto (eta cuadrado generalizado, ges) para el ANOVA de cost según total_children_f fue de 0,000977, es decir, apenas un 0,098% de la variabilidad en el costo se explica por el número de hijos totales. Según los criterios convencionales para eta cuadrado (0,01 pequeño, 0,06 mediano, 0,14 grande), este valor está muy por debajo incluso del umbral de efecto pequeño, por lo que se clasificaría como negligible.</p>
+<p>Este resultado confirma exactamente lo que se venía anticipando desde el resumen exploratorio: aunque la prueba F detectó una diferencia estadísticamente muy significativa (p = 6,28e-74), esa significancia es producto casi por completo del enorme tamaño de muestra (más de 360 mil observaciones), y no de una relación real relevante entre total_children y cost. En términos prácticos, el número de hijos en el hogar prácticamente no tiene poder explicativo sobre el costo, por lo que no sería una variable útil para diferenciar o predecir esta variable.</p>
+</div>
+</div>
+<div id="prueba-de-independencia-chi-cuadrado-tamaño-de-la-familia-vs.-preferencia-por-producto-bajo-en-grasa" class="section level2 hasAnchor" number="2.9">
+<h2><span class="header-section-number">2.9</span> Prueba de independencia (chi-cuadrado): tamaño de la familia vs. preferencia por producto bajo en grasa<a href="parametros.html#prueba-de-independencia-chi-cuadrado-tama%C3%B1o-de-la-familia-vs.-preferencia-por-producto-bajo-en-grasa" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>A diferencia de las secciones anteriores, aquí las dos variables son categóricas, así que la pregunta no es “¿difieren las medias?” sino “¿están asociadas las dos variables, o son independientes?”. Cruzamos el tamaño de la familia (<code>total_children</code>, agrupado en tres niveles) con si el producto es bajo en grasa (<code>low_fat</code>).</p>
+<div id="preparación-de-datos-y-tabla-de-contingencia" class="section level3 hasAnchor" number="2.9.1">
+<h3><span class="header-section-number">2.9.1</span> Preparación de datos y tabla de contingencia<a href="parametros.html#preparaci%C3%B3n-de-datos-y-tabla-de-contingencia" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="parametros.html#cb73-1" tabindex="-1"></a>df_chi <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb73-2"><a href="parametros.html#cb73-2" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb73-3"><a href="parametros.html#cb73-3" tabindex="-1"></a>    <span class="at">grupo_hijos_chi =</span> <span class="fu">case_when</span>(</span>
+<span id="cb73-4"><a href="parametros.html#cb73-4" tabindex="-1"></a>      total_children <span class="sc">&lt;=</span> <span class="dv">1</span> <span class="sc">~</span> <span class="st">&quot;Pocos (0-1)&quot;</span>,</span>
+<span id="cb73-5"><a href="parametros.html#cb73-5" tabindex="-1"></a>      total_children <span class="sc">&lt;=</span> <span class="dv">3</span> <span class="sc">~</span> <span class="st">&quot;Medio (2-3)&quot;</span>,</span>
+<span id="cb73-6"><a href="parametros.html#cb73-6" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">&quot;Muchos (4-5)&quot;</span>),</span>
+<span id="cb73-7"><a href="parametros.html#cb73-7" tabindex="-1"></a>    <span class="at">low_fat_f =</span> <span class="fu">factor</span>(low_fat))</span>
+<span id="cb73-8"><a href="parametros.html#cb73-8" tabindex="-1"></a>observados <span class="ot">&lt;-</span> <span class="fu">table</span>(df_chi<span class="sc">$</span>grupo_hijos_chi, df_chi<span class="sc">$</span>low_fat_f)</span>
+<span id="cb73-9"><a href="parametros.html#cb73-9" tabindex="-1"></a>observados</span></code></pre></div>
+<pre><code>##               
+##                    0     1
+##   Medio (2-3)  97613 47813
+##   Muchos (4-5) 69806 33806
+##   Pocos (0-1)  74800 36498</code></pre>
+<p>La tabla de contingencia cruza el grupo de tamaño de familia (grupo_hijos_chi) con si el producto es bajo en grasa (low_fat_f). La combinación con más casos es “Medio (2-3)” y “No” (bajo en grasa), con 97.613 observaciones, seguida de “Medio (2-3)” y “Sí” con 47.813. En general, el grupo “Medio (2-3)” es el más numeroso en ambas categorías de low_fat, seguido por “Pocos (0-1)” y luego “Muchos (4-5)”, que es el menos numeroso.</p>
+<p>En cuanto a la proporción dentro de cada grupo, se observa un patrón similar en los tres: aproximadamente el doble de observaciones caen en “No” comparado con “Sí” (por ejemplo, en “Medio” la razón es ~2,04; en “Muchos” ~2,06; en “Pocos” ~2,05). Esto sugiere, a simple vista, que la proporción de productos bajos en grasa se mantiene bastante estable entre los distintos tamaños de familia, lo que podría anticipar que la prueba de independencia no encuentre una asociación fuerte entre estas dos variables.</p>
+</div>
+<div id="chi-cuadrado-calculado-a-mano" class="section level3 hasAnchor" number="2.9.2">
+<h3><span class="header-section-number">2.9.2</span> Chi-cuadrado calculado a mano<a href="parametros.html#chi-cuadrado-calculado-a-mano" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="parametros.html#cb75-1" tabindex="-1"></a>filas_totales <span class="ot">&lt;-</span> <span class="fu">rowSums</span>(observados)</span>
+<span id="cb75-2"><a href="parametros.html#cb75-2" tabindex="-1"></a>col_totales <span class="ot">&lt;-</span> <span class="fu">colSums</span>(observados)</span>
+<span id="cb75-3"><a href="parametros.html#cb75-3" tabindex="-1"></a>total_general <span class="ot">&lt;-</span> <span class="fu">sum</span>(observados)</span>
+<span id="cb75-4"><a href="parametros.html#cb75-4" tabindex="-1"></a></span>
+<span id="cb75-5"><a href="parametros.html#cb75-5" tabindex="-1"></a>esperados <span class="ot">&lt;-</span> <span class="fu">outer</span>(filas_totales, col_totales, <span class="at">FUN =</span> <span class="cf">function</span>(f, c) f <span class="sc">*</span> c <span class="sc">/</span> total_general)</span>
+<span id="cb75-6"><a href="parametros.html#cb75-6" tabindex="-1"></a></span>
+<span id="cb75-7"><a href="parametros.html#cb75-7" tabindex="-1"></a>chi_cuadrado <span class="ot">&lt;-</span> <span class="fu">sum</span>((observados <span class="sc">-</span> esperados)<span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> esperados)</span>
+<span id="cb75-8"><a href="parametros.html#cb75-8" tabindex="-1"></a>gl <span class="ot">&lt;-</span> (<span class="fu">nrow</span>(observados) <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">*</span> (<span class="fu">ncol</span>(observados) <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb75-9"><a href="parametros.html#cb75-9" tabindex="-1"></a></span>
+<span id="cb75-10"><a href="parametros.html#cb75-10" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
+<span id="cb75-11"><a href="parametros.html#cb75-11" tabindex="-1"></a>chi_cuadrado_tab <span class="ot">&lt;-</span> <span class="fu">qchisq</span>(<span class="dv">1</span> <span class="sc">-</span> alpha, gl)</span>
+<span id="cb75-12"><a href="parametros.html#cb75-12" tabindex="-1"></a></span>
+<span id="cb75-13"><a href="parametros.html#cb75-13" tabindex="-1"></a>p_valor <span class="ot">&lt;-</span> <span class="fu">pchisq</span>(chi_cuadrado, gl, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb75-14"><a href="parametros.html#cb75-14" tabindex="-1"></a></span>
+<span id="cb75-15"><a href="parametros.html#cb75-15" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">chi_cuadrado =</span> chi_cuadrado, <span class="at">gl =</span> gl, <span class="at">chi_tab =</span> chi_cuadrado_tab, <span class="at">p_valor =</span> p_valor)</span></code></pre></div>
+<pre><code>##   chi_cuadrado gl  chi_tab   p_valor
+## 1     1.734642  2 5.991465 0.4200755</code></pre>
+<p>Se calculó manualmente la prueba chi-cuadrado de independencia entre el grupo de tamaño de familia y low_fat, obteniendo chi-cuadrado = 1,734642 (gl = 2), mientras que el valor tabulado para α = 0,05 es chi_tab = 5,991465. Como el chi-cuadrado calculado (1,73) es menor que el tabulado (5,99), no se rechaza la hipótesis nula de independencia; esto se confirma también con el p-valor = 0,4200755, que es mucho mayor que α = 0,05.</p>
+<p>Esto indica que no hay evidencia suficiente para afirmar que el tamaño de la familia (total_children agrupado) esté asociado con la preferencia por productos bajos en grasa. Este resultado es coherente con lo que ya se anticipaba en la tabla de contingencia, donde la proporción de “No”/“Sí” se mantenía prácticamente igual (~2:1) en los tres grupos de tamaño de familia, es decir, ambas variables parecen ser independientes entre sí.</p>
+</div>
+<div id="verificación-con-chisq.test" class="section level3 hasAnchor" number="2.9.3">
+<h3><span class="header-section-number">2.9.3</span> Verificación con <code>chisq.test()</code><a href="parametros.html#verificaci%C3%B3n-con-chisq.test" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="parametros.html#cb77-1" tabindex="-1"></a><span class="fu">chisq.test</span>(observados)</span></code></pre></div>
+<pre><code>## 
+##  Pearson&#39;s Chi-squared test
+## 
+## data:  observados
+## X-squared = 1.7346, df = 2, p-value = 0.4201</code></pre>
+<p>Al verificar con chisq.test(), el resultado coincide con el cálculo manual: X-squared = 1,7346 (df = 2) con un p-valor = 0,4201, prácticamente idéntico a los chi-cuadrado = 1,734642 y p-valor = 0,4200755 obtenidos a mano. Esto confirma que el procedimiento manual replicó correctamente la prueba de independencia, y reafirma la conclusión de que no existe evidencia de asociación entre el tamaño de la familia y la preferencia por productos bajos en grasa: ambas variables se comportan como independientes en este dataset.</p>
+</div>
+<div id="tamaño-del-efecto-v-de-cramér" class="section level3 hasAnchor" number="2.9.4">
+<h3><span class="header-section-number">2.9.4</span> Tamaño del efecto (V de Cramér)<a href="parametros.html#tama%C3%B1o-del-efecto-v-de-cram%C3%A9r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="parametros.html#cb79-1" tabindex="-1"></a><span class="fu">cramer_v</span>(observados)</span></code></pre></div>
+<pre><code>## [1] 0.002194073</code></pre>
+<p>La V de Cramér para la asociación entre el tamaño de la familia y low_fat fue de 0,002194073, un valor prácticamente nulo dentro de su rango posible (0 a 1). Según los criterios convencionales, esto indica una asociación negligible, esencialmente inexistente en términos prácticos.</p>
+<p>Esto es coherente con el resultado anterior, donde ya no se había rechazado la hipótesis de independencia (p-valor = 0,4201): aquí ni siquiera se llegó a un resultado “falsamente significativo” por el tamaño de muestra, como pasó en otras pruebas de este análisis, sino que tanto la significancia estadística como la magnitud del efecto apuntan en la misma dirección: no hay asociación entre el tamaño de la familia y la preferencia por productos bajos en grasa.</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="correlacion.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/rstudio/bookdown-demo/edit/master/02-literature.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
+});
+});
+</script>
+
+</body>
+
+</html>

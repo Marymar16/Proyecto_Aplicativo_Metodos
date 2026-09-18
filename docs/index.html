@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Proyecto Aplicativo</title>
+  <meta name="description" content="En este espacio tendré lo relacionado a mi proyecto aplicativo para mostrar nuestros aprendizajes durante todo el semestre sobre Métodos Estadísticos." />
+  <meta name="generator" content="bookdown 0.47 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Proyecto Aplicativo" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="En este espacio tendré lo relacionado a mi proyecto aplicativo para mostrar nuestros aprendizajes durante todo el semestre sobre Métodos Estadísticos." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Proyecto Aplicativo" />
+  
+  <meta name="twitter:description" content="En este espacio tendré lo relacionado a mi proyecto aplicativo para mostrar nuestros aprendizajes durante todo el semestre sobre Métodos Estadísticos." />
+  
+
+<meta name="author" content="Mary Ramirez y Maria Jose Martinez" />
+
+
+<meta name="date" content="2026-09-17" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+
+<link rel="next" href="intro.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Contexto del problema</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#objetivo"><i class="fa fa-check"></i><b>0.1</b> Objetivo</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Análisis exploratorio de datos (EDA)</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#preparaci%C3%B3n-de-los-datos"><i class="fa fa-check"></i><b>1.1</b> Preparación de los datos</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="intro.html"><a href="intro.html#librer%C3%ADas"><i class="fa fa-check"></i><b>1.1.1</b> Librerías</a></li>
+<li class="chapter" data-level="1.1.2" data-path="intro.html"><a href="intro.html#cargar-los-datos"><i class="fa fa-check"></i><b>1.1.2</b> Cargar los datos</a></li>
+<li class="chapter" data-level="1.1.3" data-path="intro.html"><a href="intro.html#primer-vistazo-a-los-datos"><i class="fa fa-check"></i><b>1.1.3</b> Primer vistazo a los datos</a></li>
+<li class="chapter" data-level="1.1.4" data-path="intro.html"><a href="intro.html#datos-faltantes"><i class="fa fa-check"></i><b>1.1.4</b> Datos faltantes</a></li>
+<li class="chapter" data-level="1.1.5" data-path="intro.html"><a href="intro.html#variables-como-factor"><i class="fa fa-check"></i><b>1.1.5</b> Variables como factor</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#an%C3%A1lisis-univariado-de-la-variable-de-costo-cost"><i class="fa fa-check"></i><b>1.2</b> Análisis univariado de la variable de costo (<code>cost</code>)</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="intro.html"><a href="intro.html#estad%C3%ADsticos-descriptivos"><i class="fa fa-check"></i><b>1.2.1</b> Estadísticos descriptivos</a></li>
+<li class="chapter" data-level="1.2.2" data-path="intro.html"><a href="intro.html#distribuci%C3%B3n-histograma"><i class="fa fa-check"></i><b>1.2.2</b> Distribución (histograma)</a></li>
+<li class="chapter" data-level="1.2.3" data-path="intro.html"><a href="intro.html#boxplot"><i class="fa fa-check"></i><b>1.2.3</b> Boxplot</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#an%C3%A1lisis-univariado-de-las-variables-de-ventas"><i class="fa fa-check"></i><b>1.3</b> Análisis univariado de las variables de ventas</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="intro.html"><a href="intro.html#estad%C3%ADsticos-descriptivos-1"><i class="fa fa-check"></i><b>1.3.1</b> Estadísticos descriptivos</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#an%C3%A1lisis-univariado-del-perfil-del-hogar"><i class="fa fa-check"></i><b>1.4</b> Análisis univariado del perfil del hogar</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="intro.html"><a href="intro.html#tabla-de-frecuencias"><i class="fa fa-check"></i><b>1.4.1</b> Tabla de frecuencias</a></li>
+<li class="chapter" data-level="1.4.2" data-path="intro.html"><a href="intro.html#gr%C3%A1ficos-de-barras"><i class="fa fa-check"></i><b>1.4.2</b> Gráficos de barras</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#an%C3%A1lisis-bivariado-perfil-del-hogar-vs.-costo-y-ventas"><i class="fa fa-check"></i><b>1.5</b> Análisis bivariado: perfil del hogar vs. costo y ventas</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="intro.html"><a href="intro.html#costo-seg%C3%BAn-n%C3%BAmero-de-hijos-totales"><i class="fa fa-check"></i><b>1.5.1</b> Costo según número de hijos totales</a></li>
+<li class="chapter" data-level="1.5.2" data-path="intro.html"><a href="intro.html#ventas-por-unidad-seg%C3%BAn-hijos-en-casa"><i class="fa fa-check"></i><b>1.5.2</b> Ventas por unidad según hijos en casa</a></li>
+<li class="chapter" data-level="1.5.3" data-path="intro.html"><a href="intro.html#ventas-de-tienda-seg%C3%BAn-autos-disponibles"><i class="fa fa-check"></i><b>1.5.3</b> Ventas de tienda según autos disponibles</a></li>
+<li class="chapter" data-level="1.5.4" data-path="intro.html"><a href="intro.html#dispersi%C3%B3n-superficie-de-la-tienda-vs.-costo"><i class="fa fa-check"></i><b>1.5.4</b> Dispersión: superficie de la tienda vs. costo</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="parametros.html"><a href="parametros.html"><i class="fa fa-check"></i><b>2</b> Pruebas de hipótesis paramétricas y no paramétricas</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="parametros.html"><a href="parametros.html#librer%C3%ADas-1"><i class="fa fa-check"></i><b>2.1</b> Librerías</a></li>
+<li class="chapter" data-level="2.2" data-path="parametros.html"><a href="parametros.html#carga-de-datos"><i class="fa fa-check"></i><b>2.2</b> Carga de datos</a></li>
+<li class="chapter" data-level="2.3" data-path="parametros.html"><a href="parametros.html#comparaci%C3%B3n-de-dos-medias-independientes-varianzas-iguales-costo-seg%C3%BAn-disponibilidad-de-auto"><i class="fa fa-check"></i><b>2.3</b> Comparación de dos medias independientes (varianzas iguales): costo según disponibilidad de auto</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="parametros.html"><a href="parametros.html#preparaci%C3%B3n-de-datos"><i class="fa fa-check"></i><b>2.3.1</b> Preparación de datos</a></li>
+<li class="chapter" data-level="2.3.2" data-path="parametros.html"><a href="parametros.html#resumen-exploratorio"><i class="fa fa-check"></i><b>2.3.2</b> Resumen exploratorio</a></li>
+<li class="chapter" data-level="2.3.3" data-path="parametros.html"><a href="parametros.html#supuesto-de-normalidad"><i class="fa fa-check"></i><b>2.3.3</b> Supuesto de normalidad</a></li>
+<li class="chapter" data-level="2.3.4" data-path="parametros.html"><a href="parametros.html#supuesto-de-homocedasticidad"><i class="fa fa-check"></i><b>2.3.4</b> Supuesto de homocedasticidad</a></li>
+<li class="chapter" data-level="2.3.5" data-path="parametros.html"><a href="parametros.html#verificaci%C3%B3n-manual-del-supuesto-de-homocedasticidad-teorema-de-fisher"><i class="fa fa-check"></i><b>2.3.5</b> Verificación manual del supuesto de homocedasticidad (teorema de Fisher)</a></li>
+<li class="chapter" data-level="2.3.6" data-path="parametros.html"><a href="parametros.html#prueba-t"><i class="fa fa-check"></i><b>2.3.6</b> Prueba t</a></li>
+<li class="chapter" data-level="2.3.7" data-path="parametros.html"><a href="parametros.html#tama%C3%B1o-del-efecto"><i class="fa fa-check"></i><b>2.3.7</b> Tamaño del efecto</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="parametros.html"><a href="parametros.html#comparaci%C3%B3n-de-dos-medias-independientes-varianzas-distintas-welch-ventas-seg%C3%BAn-hijos-en-casa"><i class="fa fa-check"></i><b>2.4</b> Comparación de dos medias independientes (varianzas distintas, Welch): ventas según hijos en casa</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="parametros.html"><a href="parametros.html#preparaci%C3%B3n-de-datos-1"><i class="fa fa-check"></i><b>2.4.1</b> Preparación de datos</a></li>
+<li class="chapter" data-level="2.4.2" data-path="parametros.html"><a href="parametros.html#resumen-exploratorio-1"><i class="fa fa-check"></i><b>2.4.2</b> Resumen exploratorio</a></li>
+<li class="chapter" data-level="2.4.3" data-path="parametros.html"><a href="parametros.html#supuesto-de-normalidad-1"><i class="fa fa-check"></i><b>2.4.3</b> Supuesto de normalidad</a></li>
+<li class="chapter" data-level="2.4.4" data-path="parametros.html"><a href="parametros.html#supuesto-de-homocedasticidad-1"><i class="fa fa-check"></i><b>2.4.4</b> Supuesto de homocedasticidad</a></li>
+<li class="chapter" data-level="2.4.5" data-path="parametros.html"><a href="parametros.html#prueba-t-de-welch"><i class="fa fa-check"></i><b>2.4.5</b> Prueba t de Welch</a></li>
+<li class="chapter" data-level="2.4.6" data-path="parametros.html"><a href="parametros.html#tama%C3%B1o-del-efecto-1"><i class="fa fa-check"></i><b>2.4.6</b> Tamaño del efecto</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="parametros.html"><a href="parametros.html#comparaci%C3%B3n-de-medias-pareadas-hijos-totales-vs.-hijos-que-viven-en-casa"><i class="fa fa-check"></i><b>2.5</b> Comparación de medias pareadas: hijos totales vs. hijos que viven en casa</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="parametros.html"><a href="parametros.html#datos"><i class="fa fa-check"></i><b>2.5.1</b> Datos</a></li>
+<li class="chapter" data-level="2.5.2" data-path="parametros.html"><a href="parametros.html#resumen-exploratorio-2"><i class="fa fa-check"></i><b>2.5.2</b> Resumen exploratorio</a></li>
+<li class="chapter" data-level="2.5.3" data-path="parametros.html"><a href="parametros.html#supuesto-de-normalidad-2"><i class="fa fa-check"></i><b>2.5.3</b> Supuesto de normalidad</a></li>
+<li class="chapter" data-level="2.5.4" data-path="parametros.html"><a href="parametros.html#prueba-t-pareada"><i class="fa fa-check"></i><b>2.5.4</b> Prueba t pareada</a></li>
+<li class="chapter" data-level="2.5.5" data-path="parametros.html"><a href="parametros.html#tama%C3%B1o-del-efecto-2"><i class="fa fa-check"></i><b>2.5.5</b> Tamaño del efecto</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="parametros.html"><a href="parametros.html#comparaci%C3%B3n-no-param%C3%A9trica-de-dos-grupos-independientes-ventas-de-tienda-seg%C3%BAn-cantidad-de-hijos-totales"><i class="fa fa-check"></i><b>2.6</b> Comparación no paramétrica de dos grupos independientes: ventas de tienda según cantidad de hijos totales</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="parametros.html"><a href="parametros.html#datos-1"><i class="fa fa-check"></i><b>2.6.1</b> Datos</a></li>
+<li class="chapter" data-level="2.6.2" data-path="parametros.html"><a href="parametros.html#resumen-exploratorio-3"><i class="fa fa-check"></i><b>2.6.2</b> Resumen exploratorio</a></li>
+<li class="chapter" data-level="2.6.3" data-path="parametros.html"><a href="parametros.html#supuesto-de-normalidad-comparando-ks-y-lilliefors"><i class="fa fa-check"></i><b>2.6.3</b> Supuesto de normalidad (comparando KS y Lilliefors)</a></li>
+<li class="chapter" data-level="2.6.4" data-path="parametros.html"><a href="parametros.html#supuesto-de-homogeneidad-de-varianzas"><i class="fa fa-check"></i><b>2.6.4</b> Supuesto de homogeneidad de varianzas</a></li>
+<li class="chapter" data-level="2.6.5" data-path="parametros.html"><a href="parametros.html#prueba-de-wilcoxon-mann-whitney"><i class="fa fa-check"></i><b>2.6.5</b> Prueba de Wilcoxon (Mann-Whitney)</a></li>
+<li class="chapter" data-level="2.6.6" data-path="parametros.html"><a href="parametros.html#tama%C3%B1o-del-efecto-3"><i class="fa fa-check"></i><b>2.6.6</b> Tamaño del efecto</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="parametros.html"><a href="parametros.html#comparaci%C3%B3n-no-param%C3%A9trica-pareada-hijos-totales-vs.-hijos-en-casa-alternativa-a-la-prueba-t"><i class="fa fa-check"></i><b>2.7</b> Comparación no paramétrica pareada: hijos totales vs. hijos en casa (alternativa a la prueba t)</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="parametros.html"><a href="parametros.html#prueba-de-wilcoxon-pareada"><i class="fa fa-check"></i><b>2.7.1</b> Prueba de Wilcoxon pareada</a></li>
+<li class="chapter" data-level="2.7.2" data-path="parametros.html"><a href="parametros.html#tama%C3%B1o-del-efecto-4"><i class="fa fa-check"></i><b>2.7.2</b> Tamaño del efecto</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="parametros.html"><a href="parametros.html#anova-de-un-factor-costo-seg%C3%BAn-n%C3%BAmero-de-hijos-totales"><i class="fa fa-check"></i><b>2.8</b> ANOVA de un factor: costo según número de hijos totales</a>
+<ul>
+<li class="chapter" data-level="2.8.1" data-path="parametros.html"><a href="parametros.html#tama%C3%B1os-de-muestra-y-promedios-por-grupo"><i class="fa fa-check"></i><b>2.8.1</b> Tamaños de muestra y promedios por grupo</a></li>
+<li class="chapter" data-level="2.8.2" data-path="parametros.html"><a href="parametros.html#sumas-de-cuadrados-y-estad%C3%ADstico-f-manual"><i class="fa fa-check"></i><b>2.8.2</b> Sumas de cuadrados y estadístico F (manual)</a></li>
+<li class="chapter" data-level="2.8.3" data-path="parametros.html"><a href="parametros.html#tama%C3%B1o-del-efecto-eta-cuadrado"><i class="fa fa-check"></i><b>2.8.3</b> Tamaño del efecto (eta cuadrado)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.9" data-path="parametros.html"><a href="parametros.html#prueba-de-independencia-chi-cuadrado-tama%C3%B1o-de-la-familia-vs.-preferencia-por-producto-bajo-en-grasa"><i class="fa fa-check"></i><b>2.9</b> Prueba de independencia (chi-cuadrado): tamaño de la familia vs. preferencia por producto bajo en grasa</a>
+<ul>
+<li class="chapter" data-level="2.9.1" data-path="parametros.html"><a href="parametros.html#preparaci%C3%B3n-de-datos-y-tabla-de-contingencia"><i class="fa fa-check"></i><b>2.9.1</b> Preparación de datos y tabla de contingencia</a></li>
+<li class="chapter" data-level="2.9.2" data-path="parametros.html"><a href="parametros.html#chi-cuadrado-calculado-a-mano"><i class="fa fa-check"></i><b>2.9.2</b> Chi-cuadrado calculado a mano</a></li>
+<li class="chapter" data-level="2.9.3" data-path="parametros.html"><a href="parametros.html#verificaci%C3%B3n-con-chisq.test"><i class="fa fa-check"></i><b>2.9.3</b> Verificación con <code>chisq.test()</code></a></li>
+<li class="chapter" data-level="2.9.4" data-path="parametros.html"><a href="parametros.html#tama%C3%B1o-del-efecto-v-de-cram%C3%A9r"><i class="fa fa-check"></i><b>2.9.4</b> Tamaño del efecto (V de Cramér)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="correlacion.html"><a href="correlacion.html"><i class="fa fa-check"></i><b>3</b> Correlación y regresión lineal simple</a>
+<ul>
+<li class="chapter" data-level="3.0.1" data-path="correlacion.html"><a href="correlacion.html#librer%C3%ADas-2"><i class="fa fa-check"></i><b>3.0.1</b> Librerías</a></li>
+<li class="chapter" data-level="3.1" data-path="correlacion.html"><a href="correlacion.html#carga-de-datos-1"><i class="fa fa-check"></i><b>3.1</b> Carga de datos</a></li>
+<li class="chapter" data-level="3.2" data-path="correlacion.html"><a href="correlacion.html#diagrama-de-dispersi%C3%B3n"><i class="fa fa-check"></i><b>3.2</b> Diagrama de dispersión</a></li>
+<li class="chapter" data-level="3.3" data-path="correlacion.html"><a href="correlacion.html#supuesto-de-normalidad-3"><i class="fa fa-check"></i><b>3.3</b> Supuesto de normalidad</a></li>
+<li class="chapter" data-level="3.4" data-path="correlacion.html"><a href="correlacion.html#coeficiente-de-correlaci%C3%B3n-de-pearson"><i class="fa fa-check"></i><b>3.4</b> Coeficiente de correlación de Pearson</a></li>
+<li class="chapter" data-level="3.5" data-path="correlacion.html"><a href="correlacion.html#regresi%C3%B3n-lineal-simple"><i class="fa fa-check"></i><b>3.5</b> Regresión lineal simple</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Proyecto Aplicativo</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">Proyecto Aplicativo</h1>
+<p class="author"><em>Mary Ramirez y Maria Jose Martinez</em></p>
+<p class="date"><em>2026-09-17</em></p>
+</div>
+<div id="contexto-del-problema" class="section level1 unnumbered hasAnchor">
+<h1>Contexto del problema<a href="index.html#contexto-del-problema" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Los datos que vamos a analizar corresponden al dataset <strong>“Media Campaign Cost Prediction”</strong> (Kaggle Playground Series S3E11). Cada fila representa el registro de un producto en una tienda, junto con el perfil del hogar del cliente asociado (número de hijos, autos disponibles), características del producto (peso, tipo de empaque, si es bajo en grasa) y de la tienda (superficie, si tiene barra de café, sala de video, barra de ensaladas, comida preparada, floristería), además de las ventas registradas y el costo de la campaña de mercadeo asociado.</p>
+<div id="objetivo" class="section level2 hasAnchor" number="0.1">
+<h2><span class="header-section-number">0.1</span> Objetivo<a href="index.html#objetivo" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Analizar si el perfil del hogar del cliente —número de hijos totales (<code>total_children</code>), hijos que viven en casa (<code>num_children_at_home</code>) y autos disponibles (<code>avg_cars_at home(approx).1</code>)— está asociado con las ventas (<code>unit_sales</code>, <code>store_sales</code>) y el costo de la campaña de mercadeo (<code>cost</code>). Esto se explora primero de forma descriptiva en el capítulo de EDA (Capítulo <a href="intro.html#intro">1</a>) y luego se confirma o descarta formalmente mediante pruebas de hipótesis paramétricas y no paramétricas (Capítulo <a href="parametros.html#parametros">2</a>).</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="intro.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/rstudio/bookdown-demo/edit/master/index.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
+});
+});
+</script>
+
+</body>
+
+</html>

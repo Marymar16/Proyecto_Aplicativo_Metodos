@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capitulo 1 Análisis exploratorio de datos (EDA) | Proyecto Aplicativo</title>
+  <meta name="description" content="En este espacio tendré lo relacionado a mi proyecto aplicativo para mostrar nuestros aprendizajes durante todo el semestre sobre Métodos Estadísticos." />
+  <meta name="generator" content="bookdown 0.47 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capitulo 1 Análisis exploratorio de datos (EDA) | Proyecto Aplicativo" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="En este espacio tendré lo relacionado a mi proyecto aplicativo para mostrar nuestros aprendizajes durante todo el semestre sobre Métodos Estadísticos." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capitulo 1 Análisis exploratorio de datos (EDA) | Proyecto Aplicativo" />
+  
+  <meta name="twitter:description" content="En este espacio tendré lo relacionado a mi proyecto aplicativo para mostrar nuestros aprendizajes durante todo el semestre sobre Métodos Estadísticos." />
+  
+
+<meta name="author" content="Mary Ramirez y Maria Jose Martinez" />
+
+
+<meta name="date" content="2026-09-17" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="parametros.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Contexto del problema</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#objetivo"><i class="fa fa-check"></i><b>0.1</b> Objetivo</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Análisis exploratorio de datos (EDA)</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#preparaci%C3%B3n-de-los-datos"><i class="fa fa-check"></i><b>1.1</b> Preparación de los datos</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="intro.html"><a href="intro.html#librer%C3%ADas"><i class="fa fa-check"></i><b>1.1.1</b> Librerías</a></li>
+<li class="chapter" data-level="1.1.2" data-path="intro.html"><a href="intro.html#cargar-los-datos"><i class="fa fa-check"></i><b>1.1.2</b> Cargar los datos</a></li>
+<li class="chapter" data-level="1.1.3" data-path="intro.html"><a href="intro.html#primer-vistazo-a-los-datos"><i class="fa fa-check"></i><b>1.1.3</b> Primer vistazo a los datos</a></li>
+<li class="chapter" data-level="1.1.4" data-path="intro.html"><a href="intro.html#datos-faltantes"><i class="fa fa-check"></i><b>1.1.4</b> Datos faltantes</a></li>
+<li class="chapter" data-level="1.1.5" data-path="intro.html"><a href="intro.html#variables-como-factor"><i class="fa fa-check"></i><b>1.1.5</b> Variables como factor</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#an%C3%A1lisis-univariado-de-la-variable-de-costo-cost"><i class="fa fa-check"></i><b>1.2</b> Análisis univariado de la variable de costo (<code>cost</code>)</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="intro.html"><a href="intro.html#estad%C3%ADsticos-descriptivos"><i class="fa fa-check"></i><b>1.2.1</b> Estadísticos descriptivos</a></li>
+<li class="chapter" data-level="1.2.2" data-path="intro.html"><a href="intro.html#distribuci%C3%B3n-histograma"><i class="fa fa-check"></i><b>1.2.2</b> Distribución (histograma)</a></li>
+<li class="chapter" data-level="1.2.3" data-path="intro.html"><a href="intro.html#boxplot"><i class="fa fa-check"></i><b>1.2.3</b> Boxplot</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#an%C3%A1lisis-univariado-de-las-variables-de-ventas"><i class="fa fa-check"></i><b>1.3</b> Análisis univariado de las variables de ventas</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="intro.html"><a href="intro.html#estad%C3%ADsticos-descriptivos-1"><i class="fa fa-check"></i><b>1.3.1</b> Estadísticos descriptivos</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#an%C3%A1lisis-univariado-del-perfil-del-hogar"><i class="fa fa-check"></i><b>1.4</b> Análisis univariado del perfil del hogar</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="intro.html"><a href="intro.html#tabla-de-frecuencias"><i class="fa fa-check"></i><b>1.4.1</b> Tabla de frecuencias</a></li>
+<li class="chapter" data-level="1.4.2" data-path="intro.html"><a href="intro.html#gr%C3%A1ficos-de-barras"><i class="fa fa-check"></i><b>1.4.2</b> Gráficos de barras</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#an%C3%A1lisis-bivariado-perfil-del-hogar-vs.-costo-y-ventas"><i class="fa fa-check"></i><b>1.5</b> Análisis bivariado: perfil del hogar vs. costo y ventas</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="intro.html"><a href="intro.html#costo-seg%C3%BAn-n%C3%BAmero-de-hijos-totales"><i class="fa fa-check"></i><b>1.5.1</b> Costo según número de hijos totales</a></li>
+<li class="chapter" data-level="1.5.2" data-path="intro.html"><a href="intro.html#ventas-por-unidad-seg%C3%BAn-hijos-en-casa"><i class="fa fa-check"></i><b>1.5.2</b> Ventas por unidad según hijos en casa</a></li>
+<li class="chapter" data-level="1.5.3" data-path="intro.html"><a href="intro.html#ventas-de-tienda-seg%C3%BAn-autos-disponibles"><i class="fa fa-check"></i><b>1.5.3</b> Ventas de tienda según autos disponibles</a></li>
+<li class="chapter" data-level="1.5.4" data-path="intro.html"><a href="intro.html#dispersi%C3%B3n-superficie-de-la-tienda-vs.-costo"><i class="fa fa-check"></i><b>1.5.4</b> Dispersión: superficie de la tienda vs. costo</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="parametros.html"><a href="parametros.html"><i class="fa fa-check"></i><b>2</b> Pruebas de hipótesis paramétricas y no paramétricas</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="parametros.html"><a href="parametros.html#librer%C3%ADas-1"><i class="fa fa-check"></i><b>2.1</b> Librerías</a></li>
+<li class="chapter" data-level="2.2" data-path="parametros.html"><a href="parametros.html#carga-de-datos"><i class="fa fa-check"></i><b>2.2</b> Carga de datos</a></li>
+<li class="chapter" data-level="2.3" data-path="parametros.html"><a href="parametros.html#comparaci%C3%B3n-de-dos-medias-independientes-varianzas-iguales-costo-seg%C3%BAn-disponibilidad-de-auto"><i class="fa fa-check"></i><b>2.3</b> Comparación de dos medias independientes (varianzas iguales): costo según disponibilidad de auto</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="parametros.html"><a href="parametros.html#preparaci%C3%B3n-de-datos"><i class="fa fa-check"></i><b>2.3.1</b> Preparación de datos</a></li>
+<li class="chapter" data-level="2.3.2" data-path="parametros.html"><a href="parametros.html#resumen-exploratorio"><i class="fa fa-check"></i><b>2.3.2</b> Resumen exploratorio</a></li>
+<li class="chapter" data-level="2.3.3" data-path="parametros.html"><a href="parametros.html#supuesto-de-normalidad"><i class="fa fa-check"></i><b>2.3.3</b> Supuesto de normalidad</a></li>
+<li class="chapter" data-level="2.3.4" data-path="parametros.html"><a href="parametros.html#supuesto-de-homocedasticidad"><i class="fa fa-check"></i><b>2.3.4</b> Supuesto de homocedasticidad</a></li>
+<li class="chapter" data-level="2.3.5" data-path="parametros.html"><a href="parametros.html#verificaci%C3%B3n-manual-del-supuesto-de-homocedasticidad-teorema-de-fisher"><i class="fa fa-check"></i><b>2.3.5</b> Verificación manual del supuesto de homocedasticidad (teorema de Fisher)</a></li>
+<li class="chapter" data-level="2.3.6" data-path="parametros.html"><a href="parametros.html#prueba-t"><i class="fa fa-check"></i><b>2.3.6</b> Prueba t</a></li>
+<li class="chapter" data-level="2.3.7" data-path="parametros.html"><a href="parametros.html#tama%C3%B1o-del-efecto"><i class="fa fa-check"></i><b>2.3.7</b> Tamaño del efecto</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="parametros.html"><a href="parametros.html#comparaci%C3%B3n-de-dos-medias-independientes-varianzas-distintas-welch-ventas-seg%C3%BAn-hijos-en-casa"><i class="fa fa-check"></i><b>2.4</b> Comparación de dos medias independientes (varianzas distintas, Welch): ventas según hijos en casa</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="parametros.html"><a href="parametros.html#preparaci%C3%B3n-de-datos-1"><i class="fa fa-check"></i><b>2.4.1</b> Preparación de datos</a></li>
+<li class="chapter" data-level="2.4.2" data-path="parametros.html"><a href="parametros.html#resumen-exploratorio-1"><i class="fa fa-check"></i><b>2.4.2</b> Resumen exploratorio</a></li>
+<li class="chapter" data-level="2.4.3" data-path="parametros.html"><a href="parametros.html#supuesto-de-normalidad-1"><i class="fa fa-check"></i><b>2.4.3</b> Supuesto de normalidad</a></li>
+<li class="chapter" data-level="2.4.4" data-path="parametros.html"><a href="parametros.html#supuesto-de-homocedasticidad-1"><i class="fa fa-check"></i><b>2.4.4</b> Supuesto de homocedasticidad</a></li>
+<li class="chapter" data-level="2.4.5" data-path="parametros.html"><a href="parametros.html#prueba-t-de-welch"><i class="fa fa-check"></i><b>2.4.5</b> Prueba t de Welch</a></li>
+<li class="chapter" data-level="2.4.6" data-path="parametros.html"><a href="parametros.html#tama%C3%B1o-del-efecto-1"><i class="fa fa-check"></i><b>2.4.6</b> Tamaño del efecto</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="parametros.html"><a href="parametros.html#comparaci%C3%B3n-de-medias-pareadas-hijos-totales-vs.-hijos-que-viven-en-casa"><i class="fa fa-check"></i><b>2.5</b> Comparación de medias pareadas: hijos totales vs. hijos que viven en casa</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="parametros.html"><a href="parametros.html#datos"><i class="fa fa-check"></i><b>2.5.1</b> Datos</a></li>
+<li class="chapter" data-level="2.5.2" data-path="parametros.html"><a href="parametros.html#resumen-exploratorio-2"><i class="fa fa-check"></i><b>2.5.2</b> Resumen exploratorio</a></li>
+<li class="chapter" data-level="2.5.3" data-path="parametros.html"><a href="parametros.html#supuesto-de-normalidad-2"><i class="fa fa-check"></i><b>2.5.3</b> Supuesto de normalidad</a></li>
+<li class="chapter" data-level="2.5.4" data-path="parametros.html"><a href="parametros.html#prueba-t-pareada"><i class="fa fa-check"></i><b>2.5.4</b> Prueba t pareada</a></li>
+<li class="chapter" data-level="2.5.5" data-path="parametros.html"><a href="parametros.html#tama%C3%B1o-del-efecto-2"><i class="fa fa-check"></i><b>2.5.5</b> Tamaño del efecto</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="parametros.html"><a href="parametros.html#comparaci%C3%B3n-no-param%C3%A9trica-de-dos-grupos-independientes-ventas-de-tienda-seg%C3%BAn-cantidad-de-hijos-totales"><i class="fa fa-check"></i><b>2.6</b> Comparación no paramétrica de dos grupos independientes: ventas de tienda según cantidad de hijos totales</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="parametros.html"><a href="parametros.html#datos-1"><i class="fa fa-check"></i><b>2.6.1</b> Datos</a></li>
+<li class="chapter" data-level="2.6.2" data-path="parametros.html"><a href="parametros.html#resumen-exploratorio-3"><i class="fa fa-check"></i><b>2.6.2</b> Resumen exploratorio</a></li>
+<li class="chapter" data-level="2.6.3" data-path="parametros.html"><a href="parametros.html#supuesto-de-normalidad-comparando-ks-y-lilliefors"><i class="fa fa-check"></i><b>2.6.3</b> Supuesto de normalidad (comparando KS y Lilliefors)</a></li>
+<li class="chapter" data-level="2.6.4" data-path="parametros.html"><a href="parametros.html#supuesto-de-homogeneidad-de-varianzas"><i class="fa fa-check"></i><b>2.6.4</b> Supuesto de homogeneidad de varianzas</a></li>
+<li class="chapter" data-level="2.6.5" data-path="parametros.html"><a href="parametros.html#prueba-de-wilcoxon-mann-whitney"><i class="fa fa-check"></i><b>2.6.5</b> Prueba de Wilcoxon (Mann-Whitney)</a></li>
+<li class="chapter" data-level="2.6.6" data-path="parametros.html"><a href="parametros.html#tama%C3%B1o-del-efecto-3"><i class="fa fa-check"></i><b>2.6.6</b> Tamaño del efecto</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="parametros.html"><a href="parametros.html#comparaci%C3%B3n-no-param%C3%A9trica-pareada-hijos-totales-vs.-hijos-en-casa-alternativa-a-la-prueba-t"><i class="fa fa-check"></i><b>2.7</b> Comparación no paramétrica pareada: hijos totales vs. hijos en casa (alternativa a la prueba t)</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="parametros.html"><a href="parametros.html#prueba-de-wilcoxon-pareada"><i class="fa fa-check"></i><b>2.7.1</b> Prueba de Wilcoxon pareada</a></li>
+<li class="chapter" data-level="2.7.2" data-path="parametros.html"><a href="parametros.html#tama%C3%B1o-del-efecto-4"><i class="fa fa-check"></i><b>2.7.2</b> Tamaño del efecto</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="parametros.html"><a href="parametros.html#anova-de-un-factor-costo-seg%C3%BAn-n%C3%BAmero-de-hijos-totales"><i class="fa fa-check"></i><b>2.8</b> ANOVA de un factor: costo según número de hijos totales</a>
+<ul>
+<li class="chapter" data-level="2.8.1" data-path="parametros.html"><a href="parametros.html#tama%C3%B1os-de-muestra-y-promedios-por-grupo"><i class="fa fa-check"></i><b>2.8.1</b> Tamaños de muestra y promedios por grupo</a></li>
+<li class="chapter" data-level="2.8.2" data-path="parametros.html"><a href="parametros.html#sumas-de-cuadrados-y-estad%C3%ADstico-f-manual"><i class="fa fa-check"></i><b>2.8.2</b> Sumas de cuadrados y estadístico F (manual)</a></li>
+<li class="chapter" data-level="2.8.3" data-path="parametros.html"><a href="parametros.html#tama%C3%B1o-del-efecto-eta-cuadrado"><i class="fa fa-check"></i><b>2.8.3</b> Tamaño del efecto (eta cuadrado)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.9" data-path="parametros.html"><a href="parametros.html#prueba-de-independencia-chi-cuadrado-tama%C3%B1o-de-la-familia-vs.-preferencia-por-producto-bajo-en-grasa"><i class="fa fa-check"></i><b>2.9</b> Prueba de independencia (chi-cuadrado): tamaño de la familia vs. preferencia por producto bajo en grasa</a>
+<ul>
+<li class="chapter" data-level="2.9.1" data-path="parametros.html"><a href="parametros.html#preparaci%C3%B3n-de-datos-y-tabla-de-contingencia"><i class="fa fa-check"></i><b>2.9.1</b> Preparación de datos y tabla de contingencia</a></li>
+<li class="chapter" data-level="2.9.2" data-path="parametros.html"><a href="parametros.html#chi-cuadrado-calculado-a-mano"><i class="fa fa-check"></i><b>2.9.2</b> Chi-cuadrado calculado a mano</a></li>
+<li class="chapter" data-level="2.9.3" data-path="parametros.html"><a href="parametros.html#verificaci%C3%B3n-con-chisq.test"><i class="fa fa-check"></i><b>2.9.3</b> Verificación con <code>chisq.test()</code></a></li>
+<li class="chapter" data-level="2.9.4" data-path="parametros.html"><a href="parametros.html#tama%C3%B1o-del-efecto-v-de-cram%C3%A9r"><i class="fa fa-check"></i><b>2.9.4</b> Tamaño del efecto (V de Cramér)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="correlacion.html"><a href="correlacion.html"><i class="fa fa-check"></i><b>3</b> Correlación y regresión lineal simple</a>
+<ul>
+<li class="chapter" data-level="3.0.1" data-path="correlacion.html"><a href="correlacion.html#librer%C3%ADas-2"><i class="fa fa-check"></i><b>3.0.1</b> Librerías</a></li>
+<li class="chapter" data-level="3.1" data-path="correlacion.html"><a href="correlacion.html#carga-de-datos-1"><i class="fa fa-check"></i><b>3.1</b> Carga de datos</a></li>
+<li class="chapter" data-level="3.2" data-path="correlacion.html"><a href="correlacion.html#diagrama-de-dispersi%C3%B3n"><i class="fa fa-check"></i><b>3.2</b> Diagrama de dispersión</a></li>
+<li class="chapter" data-level="3.3" data-path="correlacion.html"><a href="correlacion.html#supuesto-de-normalidad-3"><i class="fa fa-check"></i><b>3.3</b> Supuesto de normalidad</a></li>
+<li class="chapter" data-level="3.4" data-path="correlacion.html"><a href="correlacion.html#coeficiente-de-correlaci%C3%B3n-de-pearson"><i class="fa fa-check"></i><b>3.4</b> Coeficiente de correlación de Pearson</a></li>
+<li class="chapter" data-level="3.5" data-path="correlacion.html"><a href="correlacion.html#regresi%C3%B3n-lineal-simple"><i class="fa fa-check"></i><b>3.5</b> Regresión lineal simple</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Proyecto Aplicativo</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="intro" class="section level1 hasAnchor" number="1">
+<h1><span class="header-section-number">Capitulo 1</span> Análisis exploratorio de datos (EDA)<a href="intro.html#intro" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Este capítulo desarrolla el análisis exploratorio de datos (EDA) sobre el dataset de campañas de mercadeo en tiendas. El objetivo del EDA es entender la forma, calidad y relaciones de las variables <strong>antes</strong> de pasar a las pruebas de hipótesis: si hay datos faltantes, cómo se distribuyen <code>cost</code>, <code>unit_sales</code> y <code>store_sales</code>, y cómo se relacionan estas con el perfil del hogar (<code>total_children</code>, <code>num_children_at_home</code>, <code>avg_cars_at home(approx).1</code>).</p>
+<div id="preparación-de-los-datos" class="section level2 hasAnchor" number="1.1">
+<h2><span class="header-section-number">1.1</span> Preparación de los datos<a href="intro.html#preparaci%C3%B3n-de-los-datos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="librerías" class="section level3 hasAnchor" number="1.1.1">
+<h3><span class="header-section-number">1.1.1</span> Librerías<a href="intro.html#librer%C3%ADas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Carguemos las librerías</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="intro.html#cb1-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="intro.html#cb1-2" tabindex="-1"></a><span class="fu">library</span>(moments)</span>
+<span id="cb1-3"><a href="intro.html#cb1-3" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span></code></pre></div>
+</div>
+<div id="cargar-los-datos" class="section level3 hasAnchor" number="1.1.2">
+<h3><span class="header-section-number">1.1.2</span> Cargar los datos<a href="intro.html#cargar-los-datos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Usamos <code>read_csv()</code> (en vez de <code>read.csv()</code>) para que los nombres de columna con espacios y paréntesis, como <code>avg_cars_at home(approx).1</code>, se conserven tal cual y podamos referirnos a ellos con comillas invertidas.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="intro.html#cb2-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/train.csv&quot;</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+</div>
+<div id="primer-vistazo-a-los-datos" class="section level3 hasAnchor" number="1.1.3">
+<h3><span class="header-section-number">1.1.3</span> Primer vistazo a los datos<a href="intro.html#primer-vistazo-a-los-datos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Muéstrame las 5 primeras filas</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="intro.html#cb3-1" tabindex="-1"></a><span class="fu">head</span>(data, <span class="at">n =</span> <span class="dv">5</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 5 × 17
+##      id `store_sales(in millions)` `unit_sales(in millions)` total_children
+##   &lt;dbl&gt;                      &lt;dbl&gt;                     &lt;dbl&gt;          &lt;dbl&gt;
+## 1     0                       8.61                         3              2
+## 2     1                       5                            2              4
+## 3     2                      14.1                          4              0
+## 4     3                       4.02                         3              5
+## 5     4                       2.13                         3              5
+## # ℹ 13 more variables: num_children_at_home &lt;dbl&gt;,
+## #   `avg_cars_at home(approx).1` &lt;dbl&gt;, gross_weight &lt;dbl&gt;,
+## #   recyclable_package &lt;dbl&gt;, low_fat &lt;dbl&gt;, units_per_case &lt;dbl&gt;,
+## #   store_sqft &lt;dbl&gt;, coffee_bar &lt;dbl&gt;, video_store &lt;dbl&gt;, salad_bar &lt;dbl&gt;,
+## #   prepared_food &lt;dbl&gt;, florist &lt;dbl&gt;, cost &lt;dbl&gt;</code></pre>
+<p>La estructura de los datos</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="intro.html#cb5-1" tabindex="-1"></a><span class="fu">str</span>(data)</span></code></pre></div>
+<pre><code>## spc_tbl_ [360,336 × 17] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+##  $ id                        : num [1:360336] 0 1 2 3 4 5 6 7 8 9 ...
+##  $ store_sales(in millions)  : num [1:360336] 8.61 5 14.08 4.02 2.13 ...
+##  $ unit_sales(in millions)   : num [1:360336] 3 2 4 3 3 4 2 3 3 4 ...
+##  $ total_children            : num [1:360336] 2 4 0 5 5 5 1 2 5 1 ...
+##  $ num_children_at_home      : num [1:360336] 2 0 0 0 0 5 0 0 0 0 ...
+##  $ avg_cars_at home(approx).1: num [1:360336] 2 3 3 0 3 3 2 2 2 3 ...
+##  $ gross_weight              : num [1:360336] 10.3 6.66 21.3 14.8 17 7.26 9.58 16.9 13.8 15.7 ...
+##  $ recyclable_package        : num [1:360336] 1 1 1 0 1 0 0 1 1 1 ...
+##  $ low_fat                   : num [1:360336] 0 0 0 1 1 1 0 0 0 1 ...
+##  $ units_per_case            : num [1:360336] 32 1 26 36 20 5 6 2 6 9 ...
+##  $ store_sqft                : num [1:360336] 36509 28206 21215 21215 27694 ...
+##  $ coffee_bar                : num [1:360336] 0 1 1 1 1 1 1 1 0 1 ...
+##  $ video_store               : num [1:360336] 0 0 0 0 1 0 1 1 0 1 ...
+##  $ salad_bar                 : num [1:360336] 0 0 0 0 1 1 1 1 0 1 ...
+##  $ prepared_food             : num [1:360336] 0 0 0 0 1 1 1 1 0 1 ...
+##  $ florist                   : num [1:360336] 0 0 0 0 1 1 1 1 0 1 ...
+##  $ cost                      : num [1:360336] 62.1 121.8 83.5 66.8 111.5 ...
+##  - attr(*, &quot;spec&quot;)=
+##   .. cols(
+##   ..   id = col_double(),
+##   ..   `store_sales(in millions)` = col_double(),
+##   ..   `unit_sales(in millions)` = col_double(),
+##   ..   total_children = col_double(),
+##   ..   num_children_at_home = col_double(),
+##   ..   `avg_cars_at home(approx).1` = col_double(),
+##   ..   gross_weight = col_double(),
+##   ..   recyclable_package = col_double(),
+##   ..   low_fat = col_double(),
+##   ..   units_per_case = col_double(),
+##   ..   store_sqft = col_double(),
+##   ..   coffee_bar = col_double(),
+##   ..   video_store = col_double(),
+##   ..   salad_bar = col_double(),
+##   ..   prepared_food = col_double(),
+##   ..   florist = col_double(),
+##   ..   cost = col_double()
+##   .. )
+##  - attr(*, &quot;problems&quot;)=&lt;externalptr&gt;</code></pre>
+<p>El dataset contiene 360.336 observaciones y 17 variables, todas leídas por R como tipo num. Sin embargo, esto no refleja la naturaleza real de cada una: store_sales, unit_sales, gross_weight, store_sqft, cost y units_per_case sí corresponden a variables continuas; id, total_children, num_children_at_home y avg_cars_at home(approx).1 son numéricas discretas (conteos); mientras que recyclable_package, low_fat, coffee_bar, video_store, salad_bar, prepared_food y florist son en realidad variables binarias (0/1) que deben tratarse como factor antes de emplearse en análisis categóricos.</p>
+</div>
+<div id="datos-faltantes" class="section level3 hasAnchor" number="1.1.4">
+<h3><span class="header-section-number">1.1.4</span> Datos faltantes<a href="intro.html#datos-faltantes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Veamos si hay datos faltantes</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="intro.html#cb7-1" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb7-2"><a href="intro.html#cb7-2" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), <span class="sc">~</span><span class="fu">sum</span>(<span class="fu">is.na</span>(.)), <span class="at">.names =</span> <span class="st">&quot;NA_{.col}&quot;</span>))</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 17
+##   NA_id `NA_store_sales(in millions)` NA_unit_sales(in milli…¹ NA_total_children
+##   &lt;int&gt;                         &lt;int&gt;                    &lt;int&gt;             &lt;int&gt;
+## 1     0                             0                        0                 0
+## # ℹ abbreviated name: ¹​`NA_unit_sales(in millions)`
+## # ℹ 13 more variables: NA_num_children_at_home &lt;int&gt;,
+## #   `NA_avg_cars_at home(approx).1` &lt;int&gt;, NA_gross_weight &lt;int&gt;,
+## #   NA_recyclable_package &lt;int&gt;, NA_low_fat &lt;int&gt;, NA_units_per_case &lt;int&gt;,
+## #   NA_store_sqft &lt;int&gt;, NA_coffee_bar &lt;int&gt;, NA_video_store &lt;int&gt;,
+## #   NA_salad_bar &lt;int&gt;, NA_prepared_food &lt;int&gt;, NA_florist &lt;int&gt;, NA_cost &lt;int&gt;</code></pre>
+<p>Al revisar las 17 columnas del dataset, ninguna presenta valores faltantes: todas las variables (id, store_sales, unit_sales, total_children, num_children_at_home, avg_cars_at home(approx).1, gross_weight, recyclable_package, low_fat, units_per_case, store_sqft, coffee_bar, video_store, salad_bar, prepared_food, florist y cost) tienen 0 NA.</p>
+</div>
+<div id="variables-como-factor" class="section level3 hasAnchor" number="1.1.5">
+<h3><span class="header-section-number">1.1.5</span> Variables como factor<a href="intro.html#variables-como-factor" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Convertimos a factor las variables del perfil del hogar y un par de amenidades de la tienda, que usaremos para agrupar tanto en este capítulo como en el de pruebas de hipótesis.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="intro.html#cb9-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb9-2"><a href="intro.html#cb9-2" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb9-3"><a href="intro.html#cb9-3" tabindex="-1"></a>    <span class="at">total_children_f =</span> <span class="fu">factor</span>(total_children),</span>
+<span id="cb9-4"><a href="intro.html#cb9-4" tabindex="-1"></a>    <span class="at">num_children_at_home_f =</span> <span class="fu">factor</span>(num_children_at_home),</span>
+<span id="cb9-5"><a href="intro.html#cb9-5" tabindex="-1"></a>    <span class="at">avg_cars_f =</span> <span class="fu">factor</span>(<span class="st">`</span><span class="at">avg_cars_at home(approx).1</span><span class="st">`</span>),</span>
+<span id="cb9-6"><a href="intro.html#cb9-6" tabindex="-1"></a>    <span class="at">coffee_bar_f =</span> <span class="fu">factor</span>(coffee_bar, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;No&quot;</span>, <span class="st">&quot;Sí&quot;</span>)),</span>
+<span id="cb9-7"><a href="intro.html#cb9-7" tabindex="-1"></a>    <span class="at">salad_bar_f =</span> <span class="fu">factor</span>(salad_bar, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;No&quot;</span>, <span class="st">&quot;Sí&quot;</span>))</span>
+<span id="cb9-8"><a href="intro.html#cb9-8" tabindex="-1"></a>  )</span></code></pre></div>
+</div>
+</div>
+<div id="análisis-univariado-de-la-variable-de-costo-cost" class="section level2 hasAnchor" number="1.2">
+<h2><span class="header-section-number">1.2</span> Análisis univariado de la variable de costo (<code>cost</code>)<a href="intro.html#an%C3%A1lisis-univariado-de-la-variable-de-costo-cost" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>La variable <code>cost</code> es el costo de la campaña de mercadeo asociado a cada combinación tienda-producto-hogar. Es la primera variable de interés porque conecta directamente el perfil del hogar con el gasto en mercadeo.</p>
+<div id="estadísticos-descriptivos" class="section level3 hasAnchor" number="1.2.1">
+<h3><span class="header-section-number">1.2.1</span> Estadísticos descriptivos<a href="intro.html#estad%C3%ADsticos-descriptivos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Realicemos el resumen estadístico de la variable</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="intro.html#cb10-1" tabindex="-1"></a>data <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">length</span>(cost),</span>
+<span id="cb10-2"><a href="intro.html#cb10-2" tabindex="-1"></a>                    <span class="at">media =</span> <span class="fu">mean</span>(cost),</span>
+<span id="cb10-3"><a href="intro.html#cb10-3" tabindex="-1"></a>                    <span class="at">sd =</span> <span class="fu">sd</span>(cost),</span>
+<span id="cb10-4"><a href="intro.html#cb10-4" tabindex="-1"></a>                    <span class="at">mediana =</span> <span class="fu">median</span>(cost),</span>
+<span id="cb10-5"><a href="intro.html#cb10-5" tabindex="-1"></a>                    <span class="at">RIC =</span> <span class="fu">IQR</span>(cost),</span>
+<span id="cb10-6"><a href="intro.html#cb10-6" tabindex="-1"></a>                    <span class="at">Q1 =</span> <span class="fu">quantile</span>(cost, <span class="fl">0.25</span>),</span>
+<span id="cb10-7"><a href="intro.html#cb10-7" tabindex="-1"></a>                    <span class="at">Q3 =</span> <span class="fu">quantile</span>(cost, <span class="fl">0.75</span>),</span>
+<span id="cb10-8"><a href="intro.html#cb10-8" tabindex="-1"></a>                    <span class="at">minimo =</span> <span class="fu">min</span>(cost),</span>
+<span id="cb10-9"><a href="intro.html#cb10-9" tabindex="-1"></a>                    <span class="at">maximo =</span> <span class="fu">max</span>(cost),</span>
+<span id="cb10-10"><a href="intro.html#cb10-10" tabindex="-1"></a>                    <span class="at">asimetria =</span> <span class="fu">skewness</span>(cost),</span>
+<span id="cb10-11"><a href="intro.html#cb10-11" tabindex="-1"></a>                    <span class="at">curtosis =</span> <span class="fu">kurtosis</span>(cost))</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 11
+##        n media    sd mediana   RIC    Q1    Q3 minimo maximo asimetria curtosis
+##    &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+## 1 360336  99.6  29.9    98.8  56.3  70.3  127.   50.8   150.    0.0191     1.74</code></pre>
+<p>El coeficiente de asimetría de cost es 0,01913213, valor cercano a 0 que confirma una distribución prácticamente simétrica, consistente con la cercanía entre media (99,61) y mediana (98,81). La curtosis es 1,736699, por debajo del valor de referencia de 3 para una distribución normal, lo que indica una distribución platicúrtica (más achatada, con colas más ligeras), coherente con el rango acotado de la variable (50,79 a 149,75). En conjunto, cost presenta una distribución simétrica y ligeramente más plana que la normal, sin sesgos importantes.</p>
+</div>
+<div id="distribución-histograma" class="section level3 hasAnchor" number="1.2.2">
+<h3><span class="header-section-number">1.2.2</span> Distribución (histograma)<a href="intro.html#distribuci%C3%B3n-histograma" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="intro.html#cb12-1" tabindex="-1"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> cost)) <span class="sc">+</span></span>
+<span id="cb12-2"><a href="intro.html#cb12-2" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">40</span>, <span class="at">fill =</span> <span class="st">&quot;steelblue&quot;</span>, <span class="at">color =</span> <span class="st">&quot;white&quot;</span>) <span class="sc">+</span></span>
+<span id="cb12-3"><a href="intro.html#cb12-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Distribución del costo de campaña&quot;</span>, <span class="at">x =</span> <span class="st">&quot;cost&quot;</span>, <span class="at">y =</span> <span class="st">&quot;frecuencia&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/histcost-1.png" width="672" /></p>
+<p>El histograma de cost muestra una distribución multimodal, con al menos 4-5 zonas de mayor concentración (alrededor de 55-58, 65-68, 88-95, 110-115 y 135-140), separadas por valles de menor frecuencia. Esto contrasta con la lectura obtenida a partir de la asimetría (0,019) y la curtosis (1,74), que describían una forma global simétrica y platicúrtica, pero no captan la presencia de estas múltiples modas. La coexistencia de estos picos sugiere posibles subgrupos subyacentes en los datos (por ejemplo, distintos rangos de precio asociados a tipos de producto o promoción) que no se reflejan en las medidas de forma agregadas.</p>
+</div>
+<div id="boxplot" class="section level3 hasAnchor" number="1.2.3">
+<h3><span class="header-section-number">1.2.3</span> Boxplot<a href="intro.html#boxplot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="intro.html#cb13-1" tabindex="-1"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">y =</span> cost)) <span class="sc">+</span></span>
+<span id="cb13-2"><a href="intro.html#cb13-2" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill =</span> <span class="st">&quot;steelblue&quot;</span>) <span class="sc">+</span></span>
+<span id="cb13-3"><a href="intro.html#cb13-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Boxplot del costo de campaña&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/boxcost-1.png" width="672" /></p>
+<p>El diagrama de cajas y bigotes de cost muestra una caja bastante simétrica: la mediana (línea dentro de la caja) se ubica cerca de 98,81, con Q1 ≈ 70,32 y Q3 ≈ 126,62, valores que coinciden con el resumen numérico calculado antes. Los bigotes se extienden desde aproximadamente el mínimo (50,79) hasta el máximo (149,75).
+No se observan puntos individuales fuera de los bigotes, es decir, no hay valores atípicos. Esto es coherente con lo que ya se había notado en el histograma: aunque la distribución es multimodal (con varios picos), no tiene colas largas ni valores extremos aislados, sino que todos los datos se concentran dentro de un rango relativamente acotado (50-150), lo cual también es consistente con la curtosis platicúrtica (1,74) observada anteriormente, que indicaba precisamente la ausencia de colas pesadas.</p>
+</div>
+</div>
+<div id="análisis-univariado-de-las-variables-de-ventas" class="section level2 hasAnchor" number="1.3">
+<h2><span class="header-section-number">1.3</span> Análisis univariado de las variables de ventas<a href="intro.html#an%C3%A1lisis-univariado-de-las-variables-de-ventas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="estadísticos-descriptivos-1" class="section level3 hasAnchor" number="1.3.1">
+<h3><span class="header-section-number">1.3.1</span> Estadísticos descriptivos<a href="intro.html#estad%C3%ADsticos-descriptivos-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="intro.html#cb14-1" tabindex="-1"></a>data <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">c</span>(<span class="st">`</span><span class="at">unit_sales(in millions)</span><span class="st">`</span>, <span class="st">`</span><span class="at">store_sales(in millions)</span><span class="st">`</span>),</span>
+<span id="cb14-2"><a href="intro.html#cb14-2" tabindex="-1"></a>                           <span class="fu">list</span>(<span class="at">media =</span> mean, <span class="at">sd =</span> sd, <span class="at">mediana =</span> median,</span>
+<span id="cb14-3"><a href="intro.html#cb14-3" tabindex="-1"></a>                                <span class="at">min =</span> min, <span class="at">max =</span> max)))</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 10
+##   `unit_sales(in millions)_media` unit_sales(in million…¹ unit_sales(in millio…²
+##                             &lt;dbl&gt;                   &lt;dbl&gt;                  &lt;dbl&gt;
+## 1                            3.04                   0.785                      3
+## # ℹ abbreviated names: ¹​`unit_sales(in millions)_sd`,
+## #   ²​`unit_sales(in millions)_mediana`
+## # ℹ 7 more variables: `unit_sales(in millions)_min` &lt;dbl&gt;,
+## #   `unit_sales(in millions)_max` &lt;dbl&gt;,
+## #   `store_sales(in millions)_media` &lt;dbl&gt;,
+## #   `store_sales(in millions)_sd` &lt;dbl&gt;,
+## #   `store_sales(in millions)_mediana` &lt;dbl&gt;, …</code></pre>
+<p>unit_sales tiene una media de 3,043881 (sd = 0,7846759, mediana = 3), con rango entre 1 y 6. store_sales tiene una media de 6,337376 (sd = 3,30798, mediana = 5,78), con rango entre 0,51 y 22,92. Dado que ambas variables tienen escalas distintas, se comparó su dispersión relativa mediante el coeficiente de variación (CV = sd/media): unit_sales presenta un CV ≈ 25,8%, mientras que store_sales presenta un CV ≈ 52,2%. Esto indica que, en términos relativos, store_sales es proporcionalmente más variable que unit_sales, aun cuando su desviación estándar absoluta también es mayor en escala.</p>
+</div>
+</div>
+<div id="análisis-univariado-del-perfil-del-hogar" class="section level2 hasAnchor" number="1.4">
+<h2><span class="header-section-number">1.4</span> Análisis univariado del perfil del hogar<a href="intro.html#an%C3%A1lisis-univariado-del-perfil-del-hogar" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="tabla-de-frecuencias" class="section level3 hasAnchor" number="1.4.1">
+<h3><span class="header-section-number">1.4.1</span> Tabla de frecuencias<a href="intro.html#tabla-de-frecuencias" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="intro.html#cb16-1" tabindex="-1"></a>data <span class="sc">%&gt;%</span> <span class="fu">count</span>(total_children_f)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 2
+##   total_children_f     n
+##   &lt;fct&gt;            &lt;int&gt;
+## 1 0                36441
+## 2 1                74857
+## 3 2                73902
+## 4 3                71524
+## 5 4                70134
+## 6 5                33478</code></pre>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="intro.html#cb18-1" tabindex="-1"></a>data <span class="sc">%&gt;%</span> <span class="fu">count</span>(num_children_at_home_f)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 2
+##   num_children_at_home_f      n
+##   &lt;fct&gt;                   &lt;int&gt;
+## 1 0                      243555
+## 2 1                       49427
+## 3 2                       28163
+## 4 3                       20382
+## 5 4                       12532
+## 6 5                        6277</code></pre>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="intro.html#cb20-1" tabindex="-1"></a>data <span class="sc">%&gt;%</span> <span class="fu">count</span>(avg_cars_f)</span></code></pre></div>
+<pre><code>## # A tibble: 5 × 2
+##   avg_cars_f      n
+##   &lt;fct&gt;       &lt;int&gt;
+## 1 0           18537
+## 2 1           82619
+## 3 2          110401
+## 4 3          104424
+## 5 4           44355</code></pre>
+<p>total_children_f presenta una distribución relativamente uniforme entre 1 y 4 hijos (“1” con 74.857 casos, “2” con 73.902, “3” con 71.524), con una caída notoria en las categorías extremas “0” (36.441) y “5” (33.478), aproximadamente la mitad de frecuencia que las intermedias. num_children_at_home_f presenta un patrón distinto: la categoría “0” domina con 243.555 casos (67,6% del total), seguida de “1” (49.427), y las categorías restantes decrecen progresivamente hasta 6.277 casos en “5”. Esto confirma que la mayoría de los hogares no tiene hijos actualmente viviendo en casa.</p>
+</div>
+<div id="gráficos-de-barras" class="section level3 hasAnchor" number="1.4.2">
+<h3><span class="header-section-number">1.4.2</span> Gráficos de barras<a href="intro.html#gr%C3%A1ficos-de-barras" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="intro.html#cb22-1" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> total_children_f)) <span class="sc">+</span></span>
+<span id="cb22-2"><a href="intro.html#cb22-2" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">&quot;steelblue&quot;</span>) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Hijos totales&quot;</span>, <span class="at">x =</span> <span class="cn">NULL</span>)</span>
+<span id="cb22-3"><a href="intro.html#cb22-3" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> num_children_at_home_f)) <span class="sc">+</span></span>
+<span id="cb22-4"><a href="intro.html#cb22-4" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">&quot;steelblue&quot;</span>) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Hijos en casa&quot;</span>, <span class="at">x =</span> <span class="cn">NULL</span>)</span>
+<span id="cb22-5"><a href="intro.html#cb22-5" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> avg_cars_f)) <span class="sc">+</span></span>
+<span id="cb22-6"><a href="intro.html#cb22-6" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">&quot;steelblue&quot;</span>) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Autos disponibles&quot;</span>, <span class="at">x =</span> <span class="cn">NULL</span>)</span>
+<span id="cb22-7"><a href="intro.html#cb22-7" tabindex="-1"></a></span>
+<span id="cb22-8"><a href="intro.html#cb22-8" tabindex="-1"></a>p1 <span class="sc">+</span> p2 <span class="sc">+</span> p3</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/barras-hogar-1.png" width="672" /></p>
+<p>El gráfico de barras muestra la distribución de las tres variables del perfil del hogar. total_children presenta una forma relativamente uniforme entre 1 y 4 hijos, con una caída marcada en los extremos (0 y 5). num_children_at_home muestra un patrón muy distinto: la barra de “0” domina ampliamente sobre el resto, que decrece de forma progresiva hasta “5”. avg_cars_at_home se concentra principalmente en “2” y “3” autos, con “0” y “4” como las categorías menos frecuentes.</p>
+</div>
+</div>
+<div id="análisis-bivariado-perfil-del-hogar-vs.-costo-y-ventas" class="section level2 hasAnchor" number="1.5">
+<h2><span class="header-section-number">1.5</span> Análisis bivariado: perfil del hogar vs. costo y ventas<a href="intro.html#an%C3%A1lisis-bivariado-perfil-del-hogar-vs.-costo-y-ventas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="costo-según-número-de-hijos-totales" class="section level3 hasAnchor" number="1.5.1">
+<h3><span class="header-section-number">1.5.1</span> Costo según número de hijos totales<a href="intro.html#costo-seg%C3%BAn-n%C3%BAmero-de-hijos-totales" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="intro.html#cb23-1" tabindex="-1"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> total_children_f, <span class="at">y =</span> cost)) <span class="sc">+</span></span>
+<span id="cb23-2"><a href="intro.html#cb23-2" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill =</span> <span class="st">&quot;steelblue&quot;</span>) <span class="sc">+</span></span>
+<span id="cb23-3"><a href="intro.html#cb23-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Costo de campaña según total de hijos&quot;</span>, <span class="at">x =</span> <span class="st">&quot;total_children&quot;</span>, <span class="at">y =</span> <span class="st">&quot;cost&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/boxcost-hijos-1.png" width="672" /></p>
+<p>El boxplot de cost según total_children muestra medianas muy similares en los 6 grupos (alrededor de 97-102), sin un patrón asociado al número de hijos, y cajas y bigotes prácticamente superpuestos entre categorías. Esto anticipa lo confirmado más adelante con el ANOVA: aunque la prueba F resultó estadísticamente significativa (dado el tamaño de muestra), el tamaño del efecto (eta cuadrado = 0,000977) fue negligible, es decir, total_children prácticamente no tiene poder explicativo sobre cost.</p>
+</div>
+<div id="ventas-por-unidad-según-hijos-en-casa" class="section level3 hasAnchor" number="1.5.2">
+<h3><span class="header-section-number">1.5.2</span> Ventas por unidad según hijos en casa<a href="intro.html#ventas-por-unidad-seg%C3%BAn-hijos-en-casa" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="intro.html#cb24-1" tabindex="-1"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> num_children_at_home_f, <span class="at">y =</span> <span class="st">`</span><span class="at">unit_sales(in millions)</span><span class="st">`</span>)) <span class="sc">+</span></span>
+<span id="cb24-2"><a href="intro.html#cb24-2" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill =</span> <span class="st">&quot;steelblue&quot;</span>) <span class="sc">+</span></span>
+<span id="cb24-3"><a href="intro.html#cb24-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Ventas por unidad según hijos en casa&quot;</span>,</span>
+<span id="cb24-4"><a href="intro.html#cb24-4" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;num_children_at_home&quot;</span>, <span class="at">y =</span> <span class="st">&quot;unit_sales&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/box-ventas-hijos-casa-1.png" width="672" /></p>
+<p>El boxplot de unit_sales según num_children_at_home muestra las 6 categorías prácticamente idénticas: misma mediana (4), mismo rango intercuartílico (≈3-4) y mismos bigotes (2-5), con valores atípicos en 1 y 6 en todos los grupos por igual. No se observan diferencias notorias entre grupos, lo que sugiere que num_children_at_home probablemente no tiene relación con unit_sales.</p>
+</div>
+<div id="ventas-de-tienda-según-autos-disponibles" class="section level3 hasAnchor" number="1.5.3">
+<h3><span class="header-section-number">1.5.3</span> Ventas de tienda según autos disponibles<a href="intro.html#ventas-de-tienda-seg%C3%BAn-autos-disponibles" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="intro.html#cb25-1" tabindex="-1"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> avg_cars_f, <span class="at">y =</span> <span class="st">`</span><span class="at">store_sales(in millions)</span><span class="st">`</span>)) <span class="sc">+</span></span>
+<span id="cb25-2"><a href="intro.html#cb25-2" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill =</span> <span class="st">&quot;steelblue&quot;</span>) <span class="sc">+</span></span>
+<span id="cb25-3"><a href="intro.html#cb25-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Ventas de tienda según autos disponibles&quot;</span>,</span>
+<span id="cb25-4"><a href="intro.html#cb25-4" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;avg_cars_at_home&quot;</span>, <span class="at">y =</span> <span class="st">&quot;store_sales&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/box-ventas-autos-1.png" width="672" /></p>
+<p>El boxplot de store_sales según avg_cars_at_home muestra las 5 categorías (0 a 4 autos) muy parecidas entre sí: mediana ≈5,5-6, rango intercuartílico ≈4-8 y bigotes hasta ≈15-16, con abundantes valores atípicos por encima de ese punto en todas las categorías. No se observan diferencias notorias en tendencia central ni dispersión entre grupos, lo que sugiere que avg_cars_at_home probablemente no tiene una relación relevante con store_sales.</p>
+</div>
+<div id="dispersión-superficie-de-la-tienda-vs.-costo" class="section level3 hasAnchor" number="1.5.4">
+<h3><span class="header-section-number">1.5.4</span> Dispersión: superficie de la tienda vs. costo<a href="intro.html#dispersi%C3%B3n-superficie-de-la-tienda-vs.-costo" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Con 360 mil filas, un scatterplot con todos los puntos es lento y poco legible, así que trabajamos con una muestra aleatoria solo para este gráfico.</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="intro.html#cb26-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb26-2"><a href="intro.html#cb26-2" tabindex="-1"></a>data_muestra <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> <span class="fu">slice_sample</span>(<span class="at">n =</span> <span class="dv">5000</span>) <span class="co"># muestra solo para graficar</span></span>
+<span id="cb26-3"><a href="intro.html#cb26-3" tabindex="-1"></a></span>
+<span id="cb26-4"><a href="intro.html#cb26-4" tabindex="-1"></a><span class="fu">ggplot</span>(data_muestra, <span class="fu">aes</span>(<span class="at">x =</span> store_sqft, <span class="at">y =</span> cost)) <span class="sc">+</span></span>
+<span id="cb26-5"><a href="intro.html#cb26-5" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.3</span>, <span class="at">color =</span> <span class="st">&quot;steelblue&quot;</span>) <span class="sc">+</span></span>
+<span id="cb26-6"><a href="intro.html#cb26-6" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Superficie de la tienda vs. costo de campaña (muestra de 5,000 filas)&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/dispersion-sqft-cost-1.png" width="672" /></p>
+<p>El diagrama de dispersión entre store_sqft y cost (muestra aleatoria de 5.000 filas) no muestra una relación lineal aparente: la línea de tendencia es casi plana, con pendiente ligeramente negativa. Además, los puntos se agrupan en columnas verticales bien definidas, lo que indica que store_sqft toma solo un conjunto limitado de valores discretos en lugar de variar libremente. En conjunto, esto sugiere que store_sqft no sería un buen predictor lineal de cost.</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="parametros.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/rstudio/bookdown-demo/edit/master/01-intro.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
+});
+});
+</script>
+
+</body>
+
+</html>
