@@ -1,0 +1,28 @@
+--- 
+title: "Proyecto Aplicativo"
+author: "Mary Ramirez y Maria Jose Martinez"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+github-repo: rstudio/bookdown-demo
+description: "En este espacio tendré lo relacionado a mi proyecto aplicativo para mostrar nuestros aprendizajes durante todo el semestre sobre Métodos Estadísticos."
+---
+
+# Contexto del problema {-}
+
+Los datos que vamos a analizar corresponden al dataset **"Media Campaign Cost Prediction"** (Kaggle Playground Series S3E11). Cada fila representa el registro de un producto en una tienda, junto con el perfil del hogar del cliente asociado (número de hijos, autos disponibles), características del producto (peso, tipo de empaque, si es bajo en grasa) y de la tienda (superficie, si tiene barra de café, sala de video, barra de ensaladas, comida preparada, floristería), además de las ventas registradas y el costo de la campaña de mercadeo asociado.
+
+## Objetivo
+
+Analizar si el perfil del hogar del cliente —número de hijos totales (`total_children`), hijos que viven en casa (`num_children_at_home`) y autos disponibles (`avg_cars_at home(approx).1`)— está asociado con las ventas (`unit_sales`, `store_sales`) y el costo de la campaña de mercadeo (`cost`). Esto se explora primero de forma descriptiva en el capítulo de EDA (Capítulo \@ref(intro)) y luego se confirma o descarta formalmente mediante pruebas de hipótesis paramétricas y no paramétricas (Capítulo \@ref(parametros)).
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown'
+), 'packages.bib')
+```
