@@ -23,7 +23,7 @@
 <meta name="author" content="Mary Ramirez y Maria Jose Martinez" />
 
 
-<meta name="date" content="2026-11-25" />
+<meta name="date" content="2026-11-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -252,9 +252,10 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.7.5" data-path="correlacion.html"><a href="correlacion.html#conclusi%C3%B3n-del-modelo-de-predicci%C3%B3n"><i class="fa fa-check"></i><b>3.7.5</b> Conclusión del modelo de predicción</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="video-de-presentación.html"><a href="video-de-presentación.html"><i class="fa fa-check"></i>Video de presentación</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/Marymar16/Proyecto_Aplicativo_Metodos" target="blank">Ver código en GitHub</a></li>
-<li><a href="https://youtu.be/FzLIb5-8VcQ" target="blank">Ver video en YouTube</a></li>
+<li><a href="https://www.youtube.com/watch?v=FzLIb5-8VcQ" target="blank">Ver video en YouTube</a></li>
 
 </ul>
 
@@ -1014,7 +1015,7 @@ curtosis
 <span id="cb9-2"><a href="intro.html#cb9-2" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">40</span>, <span class="at">fill =</span> <span class="st">&quot;steelblue&quot;</span>, <span class="at">color =</span> <span class="st">&quot;white&quot;</span>) <span class="sc">+</span></span>
 <span id="cb9-3"><a href="intro.html#cb9-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Distribución del costo de campaña&quot;</span>, <span class="at">x =</span> <span class="st">&quot;cost&quot;</span>, <span class="at">y =</span> <span class="st">&quot;frecuencia&quot;</span>) <span class="sc">+</span></span>
 <span id="cb9-4"><a href="intro.html#cb9-4" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
-<p><img src="proyecto-mercadeo-hogar_files/figure-html/histcost-1.png" width="672" /></p>
+<p><img src="proyecto-mercadeo-hogar_files/figure-html/histcost-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>El histograma de <code>cost</code> muestra una distribución multimodal, con al menos 4-5 zonas de mayor concentración (alrededor de 55-58, 65-68, 88-95, 110-115 y 135-140), separadas por valles de menor frecuencia. Esto contrasta con la lectura obtenida a partir de la asimetría (0,019) y la curtosis (1,74), que describían una forma global simétrica y platicúrtica, pero no captan la presencia de estas múltiples modas. La coexistencia de estos picos sugiere posibles subgrupos subyacentes en los datos (por ejemplo, distintos rangos de precio asociados a tipos de producto o promoción) que no se reflejan en las medidas de forma agregadas.</p>
 </div>
 <div id="boxplot" class="section level3 hasAnchor" number="1.2.3">
@@ -1023,7 +1024,7 @@ curtosis
 <span id="cb10-2"><a href="intro.html#cb10-2" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill =</span> <span class="st">&quot;steelblue&quot;</span>) <span class="sc">+</span></span>
 <span id="cb10-3"><a href="intro.html#cb10-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Boxplot del costo de campaña&quot;</span>) <span class="sc">+</span></span>
 <span id="cb10-4"><a href="intro.html#cb10-4" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
-<p><img src="proyecto-mercadeo-hogar_files/figure-html/boxcost-1.png" width="672" /></p>
+<p><img src="proyecto-mercadeo-hogar_files/figure-html/boxcost-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>El diagrama de cajas y bigotes de <code>cost</code> muestra una caja bastante simétrica: la mediana (línea dentro de la caja) se ubica cerca de 98,81, con Q1 ≈ 70,32 y Q3 ≈ 126,62, valores que coinciden con el resumen numérico calculado antes. Los bigotes se extienden desde aproximadamente el mínimo (50,79) hasta el máximo (149,75). No se observan puntos individuales fuera de los bigotes, es decir, no hay valores atípicos. Esto es coherente con lo ya notado en el histograma: aunque la distribución es multimodal, no tiene colas largas ni valores extremos aislados, sino que todos los datos se concentran dentro de un rango relativamente acotado (50-150), lo cual también es consistente con la curtosis platicúrtica (1,74) observada anteriormente.</p>
 </div>
 </div>
@@ -1326,7 +1327,7 @@ n
 <span id="cb15-6"><a href="intro.html#cb15-6" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">&quot;steelblue&quot;</span>) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Autos disponibles&quot;</span>, <span class="at">x =</span> <span class="cn">NULL</span>) <span class="sc">+</span> <span class="fu">theme_bw</span>()</span>
 <span id="cb15-7"><a href="intro.html#cb15-7" tabindex="-1"></a></span>
 <span id="cb15-8"><a href="intro.html#cb15-8" tabindex="-1"></a>p1 <span class="sc">+</span> p2 <span class="sc">+</span> p3</span></code></pre></div>
-<p><img src="proyecto-mercadeo-hogar_files/figure-html/barras-hogar-1.png" width="672" /></p>
+<p><img src="proyecto-mercadeo-hogar_files/figure-html/barras-hogar-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="análisis-bivariado-perfil-del-hogar-vs.-costo-y-ventas" class="section level2 hasAnchor" number="1.5">
@@ -1452,7 +1453,7 @@ Mediana de cost
 <span id="cb17-2"><a href="intro.html#cb17-2" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill =</span> <span class="st">&quot;darkorange&quot;</span>) <span class="sc">+</span></span>
 <span id="cb17-3"><a href="intro.html#cb17-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Costo de campaña según total de hijos&quot;</span>, <span class="at">x =</span> <span class="st">&quot;total_children&quot;</span>, <span class="at">y =</span> <span class="st">&quot;cost&quot;</span>) <span class="sc">+</span></span>
 <span id="cb17-4"><a href="intro.html#cb17-4" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
-<p><img src="proyecto-mercadeo-hogar_files/figure-html/boxcost-hijos-1.png" width="672" /></p>
+<p><img src="proyecto-mercadeo-hogar_files/figure-html/boxcost-hijos-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>La tabla anterior muestra que las medias de <code>cost</code> en los 6 grupos de <code>total_children</code> se mueven en un rango muy estrecho: desde 98,34 (en los hogares con 2 hijos) hasta 100,60 (en los hogares con 1 o 5 hijos), una diferencia de apenas 2,26 puntos sobre una media general de 99,61. El boxplot confirma esto visualmente: medianas muy similares en los 6 grupos, sin un patrón asociado al número de hijos, y cajas y bigotes prácticamente superpuestos entre categorías. Esto anticipa lo confirmado más adelante con el ANOVA del Capítulo 2: aunque la prueba F resultó estadísticamente significativa (dado el tamaño de muestra), el tamaño del efecto (eta cuadrado ≈ 0,001) es negligible, es decir, <code>total_children</code> prácticamente no tiene poder explicativo sobre <code>cost</code>.</p>
 </div>
 <div id="ventas-por-unidad-según-hijos-en-casa" class="section level3 hasAnchor" number="1.5.2">
@@ -1579,7 +1580,7 @@ Mediana de unit_sales
 <span id="cb19-3"><a href="intro.html#cb19-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Ventas por unidad según hijos en casa&quot;</span>,</span>
 <span id="cb19-4"><a href="intro.html#cb19-4" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;num_children_at_home&quot;</span>, <span class="at">y =</span> <span class="st">&quot;unit_sales&quot;</span>) <span class="sc">+</span></span>
 <span id="cb19-5"><a href="intro.html#cb19-5" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
-<p><img src="proyecto-mercadeo-hogar_files/figure-html/box-ventas-hijos-casa-1.png" width="672" /></p>
+<p><img src="proyecto-mercadeo-hogar_files/figure-html/box-ventas-hijos-casa-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Según la tabla, las medias de <code>unit_sales</code> por categoría de <code>num_children_at_home</code> se mantienen muy cercanas entre sí: desde 3,013 (con 1 hijo en casa) hasta 3,259 (con 5 hijos en casa), una diferencia de apenas 0,246. El boxplot refuerza esta lectura: las 6 categorías se ven prácticamente idénticas, con la misma mediana (3), cajas y bigotes muy similares entre sí, y valores atípicos (puntos sueltos) tanto por debajo como por encima en todos los grupos por igual. No se observan diferencias notorias entre grupos, lo que sugiere que <code>num_children_at_home</code> probablemente no tiene relación relevante con <code>unit_sales</code>.</p>
 </div>
 <div id="ventas-de-tienda-según-autos-disponibles" class="section level3 hasAnchor" number="1.5.3">
@@ -1692,7 +1693,7 @@ Mediana de store_sales
 <span id="cb21-3"><a href="intro.html#cb21-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Ventas de tienda según autos disponibles&quot;</span>,</span>
 <span id="cb21-4"><a href="intro.html#cb21-4" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;avg_cars_at_home&quot;</span>, <span class="at">y =</span> <span class="st">&quot;store_sales&quot;</span>) <span class="sc">+</span></span>
 <span id="cb21-5"><a href="intro.html#cb21-5" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
-<p><img src="proyecto-mercadeo-hogar_files/figure-html/box-ventas-autos-1.png" width="672" /></p>
+<p><img src="proyecto-mercadeo-hogar_files/figure-html/box-ventas-autos-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>La tabla muestra medias de <code>store_sales</code> muy similares entre las 5 categorías de <code>avg_cars_at_home</code>: desde 6,306 (sin autos) hasta 6,373 (con 4 autos), una diferencia de apenas 0,067. El boxplot es consistente con esto: las 5 categorías (0 a 4 autos) se ven muy parecidas entre sí, con medianas entre 5,76 y 5,80, rango intercuartílico y bigotes prácticamente iguales, y abundantes valores atípicos por encima de ese rango en todas las categorías. No se observan diferencias notorias en tendencia central ni dispersión entre grupos, lo que sugiere que <code>avg_cars_at_home</code> probablemente no tiene una relación relevante con <code>store_sales</code>.</p>
 </div>
 <div id="dispersión-superficie-de-la-tienda-vs.-costo" class="section level3 hasAnchor" number="1.5.4">
@@ -1705,7 +1706,7 @@ Mediana de store_sales
 <span id="cb22-5"><a href="intro.html#cb22-5" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.3</span>, <span class="at">color =</span> <span class="st">&quot;steelblue&quot;</span>) <span class="sc">+</span></span>
 <span id="cb22-6"><a href="intro.html#cb22-6" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Superficie de la tienda vs. costo de campaña (muestra de 5,000 filas)&quot;</span>) <span class="sc">+</span></span>
 <span id="cb22-7"><a href="intro.html#cb22-7" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
-<p><img src="proyecto-mercadeo-hogar_files/figure-html/dispersion-sqft-cost-1.png" width="672" /></p>
+<p><img src="proyecto-mercadeo-hogar_files/figure-html/dispersion-sqft-cost-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>El diagrama de dispersión entre <code>store_sqft</code> y <code>cost</code> (muestra aleatoria de 5.000 filas) no muestra una relación lineal aparente: la nube de puntos no sigue una tendencia clara. Además, los puntos se agrupan en columnas verticales bien definidas, lo que indica que <code>store_sqft</code> toma solo un conjunto limitado de valores discretos en lugar de variar libremente. En conjunto, esto sugiere que <code>store_sqft</code> no sería un buen predictor lineal de <code>cost</code> por sí solo, aunque se incluye como una de las variables candidatas del modelo de regresión múltiple del Capítulo 3.</p>
 
 </div>
