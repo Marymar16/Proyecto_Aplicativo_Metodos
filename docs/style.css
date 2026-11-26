@@ -12,3 +12,52 @@ pre {
 pre code {
   white-space: inherit;
 }
+
+/* --- Presentación más limpia de los bloques de código --- */
+
+/* Bloques de código fuente (chunks de R) */
+div.sourceCode, pre.sourceCode {
+  background-color: #f7f7f9;
+  border: 1px solid #e1e1e8;
+  border-left: 4px solid #0fa1e0;
+  border-radius: 6px;
+  padding: 10px 14px;
+  margin: 14px 0;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  overflow-x: auto;
+}
+
+/* Bloques de salida (resultados impresos de R) */
+pre:not(.sourceCode) {
+  background-color: #2b2b2b;
+  color: #e8e8e8;
+  border-radius: 6px;
+  padding: 10px 14px;
+  margin: 10px 0 18px 0;
+  overflow-x: auto;
+}
+pre:not(.sourceCode) code {
+  color: #e8e8e8;
+  background: transparent;
+}
+
+/* Código en línea, p. ej. `cost` o `total_children` */
+code {
+  background-color: #f0f0f0;
+  color: #c7254e;
+  padding: 2px 5px;
+  border-radius: 4px;
+  font-size: 90%;
+}
+pre code {
+  padding: 0;
+  background: transparent;
+  color: inherit;
+}
+
+/* Tipografía monoespaciada un poco más legible */
+pre, code {
+  font-family: "Fira Code", "Consolas", "Monaco", monospace;
+  font-size: 13.5px;
+  line-height: 1.45;
+}
